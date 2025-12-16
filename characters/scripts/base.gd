@@ -1,8 +1,8 @@
 class_name BASE
 extends Resource
 
-@export_range(100, 2000) var max_speed: float = 100
-@export_range(50, 2000) var speed: float = 50
+@export_range(0, 100) var max_speed: float = 100
+@export_range(0, 100) var speed: float = 50
 @export_range(0, 1000) var attack: int = 100
 @export_range(0, 1000) var dexterity: int
 

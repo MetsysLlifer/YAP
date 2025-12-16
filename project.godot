@@ -27,6 +27,10 @@ window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[dotnet]
+
+project/assembly_name="Game"
+
 [editor_plugins]
 
 enabled=PackedStringArray()

@@ -1,37 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://gjumwl2wkcy8"]
+[gd_scene load_steps=4 format=3 uid="uid://gjumwl2wkcy8"]
 
 [ext_resource type="Script" uid="uid://b4vqaja7evjxi" path="res://Scenes/UI/ui.gd" id="1_ahcct"]
 [ext_resource type="Theme" uid="uid://domah0h0b272s" path="res://Scenes/UI/slot.tres" id="2_de23q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahcct"]
+bg_color = Color(0.7666196, 0.76661956, 0.76661944, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de23q"]
+bg_color = Color(0.047293417, 0.9120219, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_ahcct")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_right = 66.04046
-offset_bottom = 13.334244
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 105.0
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ahcct")
+theme_override_styles/fill = SubResource("StyleBoxFlat_de23q")
 show_percentage = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = -1
-anchor_top = 0.837
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -5.6600037
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Slot1" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 10
-theme = ExtResource("2_de23q")
-toggle_mode = true
-
-[node name="Slot2" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 2
-theme = ExtResource("2_de23q")
-toggle_mode = true
+[node name="Label" type="Label" parent="."]
+offset_left = 108.0
+offset_top = -1.0
+offset_right = 146.0
+offset_bottom = 22.0
+text = "TEXT"
