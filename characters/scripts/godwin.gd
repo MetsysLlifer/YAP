@@ -2,7 +2,7 @@ extends Terror
 
 @onready var cooldown: Timer = $Cooldown
 @onready var main = get_tree().current_scene
-@onready var projectile = load("res://Objects/Items/projectile.tscn")
+@onready var projectile = load("res://Objects/Items/kamote_projectile.tscn")
 
 func _ready() -> void:
 	if not status:
