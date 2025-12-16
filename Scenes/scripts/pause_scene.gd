@@ -52,6 +52,21 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 
 func _on_restart_pressed() -> void:
+	# 1. Unpause first
 	get_tree().paused = false
-	#get_tree().change_scene_to_file("res://Scenes/SceneSwitcher.tscn") # Replace with function body. # Replace with function body.
-	get_tree().reload_current_scene()
+	
+	# 2. Find the Player anywhere in the game (using Group)
+	var player = get_tree().get_first_node_in_group("player")
+	
+	# 3. Reset the Data if player exists
+	if player and player.status and player.status.has_method("reset_data"):
+		player.status.reset_data()
+	else:
+		# Fallback: If player is missing, try to force load the resource if you know the path
+		# (Only use this line if you have a specific .tres file you use)
+		# load("res://Resources/PlayerData.tres").reset_data() 
+		print("Warning: Could not find player to reset data.")
+	
+	# 4. Reload the Main Scene
+	# This wipes the SceneSwitcher memory (task progress, etc.)
+	get_tree().change_scene_to_file("res://Scenes/SceneSwitcher.tscn")

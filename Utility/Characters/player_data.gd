@@ -25,3 +25,14 @@ func remove_item(index: int) -> void:
 	if index >= 0 and index < inventory.size():
 		inventory[index] = null
 		emit_signal("inventory_updated")
+
+func reset_data() -> void:
+	# 1. Reset Health (Change 100.0 to your actual max health)
+	health = 100
+	
+	# 2. Clear Inventory (Change size based on your slots, e.g., 2 slots)
+	inventory = [null, null] 
+	
+	# 3. Notify the game that data changed
+	emit_signal("health_changed", health)
+	emit_signal("inventory_updated")
