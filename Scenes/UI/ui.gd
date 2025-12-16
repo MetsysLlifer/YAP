@@ -98,6 +98,8 @@ func updatePlayer(next_player):
 
 func updateHealth(health: float):
 	health_bar.value = health
+	var mapped = 1.0 + (1.0 - (health / 100)) * 2.0
+	label.text = str(mapped) + " / 1.0"
 
 func update_inventory_visuals() -> void:
 	var inventory_data = player.status.inventory
@@ -111,5 +113,3 @@ func update_inventory_visuals() -> void:
 				slots[i].icon = item.texture  # Assign the item's texture to the button's icon
 			else:
 				slots[i].icon = null
-	var mapped = 1.0 + (1.0 - (health / 100)) * 2.0
-	label.text = str(mapped) + " / 1.0"
