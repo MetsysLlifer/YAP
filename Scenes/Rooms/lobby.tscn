@@ -25,6 +25,7 @@ tile_set = ExtResource("2_owc2v")
 y_sort_enabled = true
 
 [node name="Player" parent="Environment" instance=ExtResource("3_0mbbq")]
+unique_name_in_owner = true
 y_sort_enabled = true
 position = Vector2(1680.1014, 119.48699)
 
