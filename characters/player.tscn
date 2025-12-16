@@ -11,7 +11,8 @@
 
 [sub_resource type="Resource" id="Resource_6t23p"]
 script = ExtResource("2_tory2")
-max_speed = 453.383
+max_speed = 100
+health = 75
 metadata/_custom_type_script = "uid://cxh3ddfa0awl7"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tory2"]
@@ -120,6 +121,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_3eadt")
 status = SubResource("Resource_6t23p")

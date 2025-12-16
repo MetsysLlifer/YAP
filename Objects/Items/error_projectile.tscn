@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy3qhn5jwxdyi"]
+
+[ext_resource type="Script" uid="uid://cviupox1ljnwl" path="res://Objects/Items/projectile.gd" id="1_24mvu"]
+[ext_resource type="Texture2D" uid="uid://tkceyvqru4nl" path="res://assets/error.png" id="2_24mvu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ma2t6"]
+radius = 3.1106734
+height = 34.960766
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_24mvu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.7683716e-07, 3.5762787e-07)
+scale = Vector2(0.6852982, 0.49477315)
+texture = ExtResource("2_24mvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.1920929e-07, 0.9999999)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ma2t6")
