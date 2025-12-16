@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_tory2"]
 script = ExtResource("2_tory2")
 max_speed = 70.0
-health = 30
+health = 75
 metadata/_custom_type_script = "uid://cxh3ddfa0awl7"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tory2"]

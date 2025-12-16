@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Terror
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var field: Area2D = $Field

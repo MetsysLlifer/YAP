@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://kj6d1ahimjwb"]
+
+[ext_resource type="Script" uid="uid://deh7bv4uh0vof" path="res://Scenes/scripts/scene.gd" id="1_l8gqp"]
+[ext_resource type="PackedScene" uid="uid://cultbrcvpd3hb" path="res://Scenes/Rooms/lobby.tscn" id="2_gr0aa"]
+[ext_resource type="PackedScene" uid="uid://gjumwl2wkcy8" path="res://Scenes/UI/ui.tscn" id="3_1hb0s"]
+[ext_resource type="PackedScene" uid="uid://b44j5ok564aj2" path="res://characters/Terrors/godwin.tscn" id="4_2i1kg"]
+
+[sub_resource type="Animation" id="Animation_1hb0s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFade/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gr0aa"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFade/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2i1kg"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFade/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2i1kg"]
+_data = {
+&"RESET": SubResource("Animation_1hb0s"),
+&"fade_in": SubResource("Animation_gr0aa"),
+&"fade_out": SubResource("Animation_2i1kg")
+}
+
+[node name="SceneSwitcher" type="Node"]
+script = ExtResource("1_l8gqp")
+
+[node name="Lobby" parent="." instance=ExtResource("2_gr0aa")]
+unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2i1kg")
+}
+
+[node name="BlackFade" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="BlackFade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="UI" parent="." instance=ExtResource("3_1hb0s")]
+
+[node name="Godwin" parent="." instance=ExtResource("4_2i1kg")]
+position = Vector2(156, 85)
+
+[node name="Cooldown" type="Timer" parent="Godwin"]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
