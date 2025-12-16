@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://camctttuhjl4a" path="res://Objects/Items/task.gd" id="1_hub68"]
 [ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="2_lacpi"]
-[ext_resource type="Script" uid="uid://db50oho3xc5ma" path="res://util/Task/task_data.gd" id="2_uwxvi"]
+[ext_resource type="Script" uid="uid://db50oho3xc5ma" path="res://Utility/Task/task_data.gd" id="2_uwxvi"]
 [ext_resource type="Texture2D" uid="uid://cochw5gqiw3wg" path="res://assets/base/network.png" id="3_geaml"]
 [ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="4_1i4ph"]
 

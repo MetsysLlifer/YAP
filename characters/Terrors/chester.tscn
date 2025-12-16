@@ -1,12 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://4sfa6ckkindb"]
 
 [ext_resource type="Script" uid="uid://cqq7t6udhj87h" path="res://characters/scripts/terror.gd" id="1_8r7md"]
-[ext_resource type="Script" uid="uid://b600652vmp2a4" path="res://characters/scripts/base.gd" id="2_tvjlj"]
+[ext_resource type="Script" uid="uid://duan3gak87v12" path="res://Utility/Characters/enemy_data.gd" id="2_tvjlj"]
 [ext_resource type="Texture2D" uid="uid://cs6417k0ql0vh" path="res://assets/base/CHESTER.png" id="3_tvjlj"]
 
 [sub_resource type="Resource" id="Resource_b3yrw"]
 script = ExtResource("2_tvjlj")
-metadata/_custom_type_script = "uid://b600652vmp2a4"
+metadata/_custom_type_script = "uid://duan3gak87v12"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_he325"]
 

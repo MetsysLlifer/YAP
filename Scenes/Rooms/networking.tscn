@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkfenph3aywwn" path="res://characters/player.tscn" id="5_ql1kw"]
 [ext_resource type="PackedScene" uid="uid://b44j5ok564aj2" path="res://characters/Terrors/godwin.tscn" id="6_xmand"]
 [ext_resource type="PackedScene" uid="uid://clj047th5hvb7" path="res://Objects/Items/task.tscn" id="7_2val7"]
-[ext_resource type="Script" uid="uid://db50oho3xc5ma" path="res://util/Task/task_data.gd" id="8_4d5sj"]
+[ext_resource type="Script" uid="uid://db50oho3xc5ma" path="res://Utility/Task/task_data.gd" id="8_4d5sj"]
 [ext_resource type="Texture2D" uid="uid://cochw5gqiw3wg" path="res://assets/base/network.png" id="9_1b1ly"]
 [ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="10_yryt0"]
 [ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="11_dck5j"]
