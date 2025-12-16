@@ -20,7 +20,6 @@ func _ready() -> void:
 	field.body_entered.connect(get_object_reference)
 	field.body_exited.connect(remove_object_reference)
 
-
 func _physics_process(_delta: float) -> void:
 	# Only run if we actually have a valid target
 	if current_target != null:

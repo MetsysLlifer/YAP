@@ -10,6 +10,7 @@ extends CharacterData
 # null = empty slot.
 @export var inventory: Array[Resource] = [null, null]
 
+
 signal inventory_updated
 
 # Helper function to add an item to the first empty slot
@@ -20,3 +21,8 @@ func add_item(item: Resource) -> bool:
 			emit_signal("inventory_updated")
 			return true # Successfully added
 	return false # Inventory is full
+
+func remove_item(index: int) -> void:
+	if index >= 0 and index < inventory.size():
+		inventory[index] = null
+		emit_signal("inventory_updated")
