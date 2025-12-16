@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var field: Area2D = $Field
-@export var status: BASE
+@export var status: EnemyData
 
 # We will store the variables directly here to avoid "status" confusion
 var current_target: Node2D = null
@@ -10,7 +10,7 @@ var pointer: RayCast2D = null
 
 func _ready() -> void:
 	if not status:
-		status = BASE.new()
+		status = EnemyData.new()
 	# 1. Create the Raycast ONCE when the game starts
 	pointer = RayCast2D.new()
 	add_child(pointer)

@@ -33,9 +33,9 @@ folder_colors={
 "res://Objects/": "green",
 "res://Resources/": "yellow",
 "res://Scenes/": "purple",
+"res://Utility/": "gray",
 "res://assets/": "red",
-"res://characters/": "blue",
-"res://util/": "gray"
+"res://characters/": "blue"
 }
 
 [global_group]

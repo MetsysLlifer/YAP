@@ -29,7 +29,10 @@ y_sort_enabled = true
 position = Vector2(115.70593, 117.61174)
 
 [node name="Heal" parent="Environment" instance=ExtResource("4_owc2v")]
-position = Vector2(179.12256, 134.21529)
+position = Vector2(171.58237, 123.36476)
+
+[node name="Heal2" parent="Environment" instance=ExtResource("4_owc2v")]
+position = Vector2(140.86987, 159.04276)
 
 [node name="Portals" type="Node2D" parent="."]
 

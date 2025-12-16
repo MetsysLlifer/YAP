@@ -1,12 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://bkfenph3aywwn"]
 
 [ext_resource type="Script" uid="uid://cw1mscvymac6c" path="res://characters/scripts/player.gd" id="1_3eadt"]
-[ext_resource type="Script" uid="uid://cxh3ddfa0awl7" path="res://util/Characters/player_data.gd" id="2_tory2"]
+[ext_resource type="Script" uid="uid://cxh3ddfa0awl7" path="res://Utility/Characters/player_data.gd" id="2_tory2"]
 [ext_resource type="Texture2D" uid="uid://hqqeu4f8wi8k" path="res://assets/base/FEMALE_PLAYER.png" id="3_tory2"]
 
 [sub_resource type="Resource" id="Resource_tory2"]
 script = ExtResource("2_tory2")
-health = 0
 metadata/_custom_type_script = "uid://cxh3ddfa0awl7"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_he325"]
