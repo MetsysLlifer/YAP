@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://gjumwl2wkcy8"]
+[gd_scene load_steps=6 format=3 uid="uid://gjumwl2wkcy8"]
 
 [ext_resource type="Script" uid="uid://b4vqaja7evjxi" path="res://Scenes/UI/ui.gd" id="1_ahcct"]
 [ext_resource type="Theme" uid="uid://domah0h0b272s" path="res://Scenes/UI/slot.tres" id="2_de23q"]
+[ext_resource type="FontFile" uid="uid://wngk2hqp3kw4" path="res://assets/fonts/GrapeSoda.ttf" id="3_c7mb3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahcct"]
 bg_color = Color(0.7666196, 0.76661956, 0.76661944, 1)
@@ -27,6 +28,7 @@ offset_left = 108.0
 offset_top = -1.0
 offset_right = 146.0
 offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("3_c7mb3")
 text = "TEXT"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -58,3 +60,4 @@ offset_left = 4.1210175
 offset_top = 15.029633
 offset_right = 173.32738
 offset_bottom = 139.87433
+theme_override_fonts/font = ExtResource("3_c7mb3")
