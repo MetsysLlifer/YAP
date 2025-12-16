@@ -133,4 +133,4 @@ autoplay = "live"
 
 [node name="Cooldown" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 2.0

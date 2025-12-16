@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8lb8wpdtlldb"]
+[gd_scene load_steps=3 format=3 uid="uid://c8lb8wpdtlldb"]
 
 [ext_resource type="Script" uid="uid://dmxbm2nipshe8" path="res://Scenes/scripts/victory.gd" id="1_1fp7o"]
+[ext_resource type="FontFile" uid="uid://wngk2hqp3kw4" path="res://assets/fonts/GrapeSoda.ttf" id="2_pyhgl"]
 
 [node name="Victory" type="Control"]
 layout_mode = 3
@@ -32,6 +33,8 @@ offset_right = 35.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_pyhgl")
+theme_override_font_sizes/font_size = 32
 text = "VICTORY!"
 
 [node name="Button" type="Button" parent="."]

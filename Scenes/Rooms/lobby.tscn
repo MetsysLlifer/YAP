@@ -26,7 +26,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="Environment" instance=ExtResource("3_0mbbq")]
 y_sort_enabled = true
-position = Vector2(115.70593, 117.61174)
+position = Vector2(1680.1014, 119.48699)
 
 [node name="Heal" parent="Environment" instance=ExtResource("4_owc2v")]
 position = Vector2(171.58237, 123.36476)

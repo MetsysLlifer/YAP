@@ -2,6 +2,8 @@ extends Node
 
 # Get references to the children nodes
 @onready var music_player: AudioStreamPlayer = $musicPlayer
+var lobby_music = preload("res://Scenes/Audio/Kevin MacLeod - Itty Bitty 8 Bit  NO COPYRIGHT 8-bit Music.mp3")
+var boss_music = preload("res://Scenes/Audio/boss.mp3")
 #@onready var sfx_player = $SFXPlayer
 
 # Path to your main menu music
@@ -14,16 +16,19 @@ func _ready():
 	# Optional: Set default volume to 50% (-6 dB is roughly half volume)
 	music_player.volume_db = -6
 
-func play_music(path: String):
-	# Don't restart if it's already playing the same song
-	if music_player.stream and music_player.stream.resource_path == path and music_player.playing:
-		return
+func play_music(type: String) -> void:
+	var stream_to_play = null
 	
-	# Load and play
-	var stream = load(path)
-	if stream:
-		music_player.stream = stream 
+	if type == "boss":
+		stream_to_play = boss_music
+	else:
+		stream_to_play = lobby_music
+	
+	# Only change if the song is actually different
+	if music_player.stream != stream_to_play:
+		music_player.stream = stream_to_play
 		music_player.play()
+
 
 #func play_sfx(path: String):
 	#var stream = load(path)

@@ -39,7 +39,7 @@ func connect_level_signals(level_node: Node) -> void:
 # --- SCENE SWITCHING (WITH "VOID" FIX) ---
 
 func handle_scene_change(current_scene_name: String, entry_tag: String):
-	# 1. FREEZE OLD SCENE (Don't hide yet to prevent flickering)
+	# 1. FREEZE OLD SCENE
 	if current_scene:
 		current_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -89,8 +89,18 @@ func handle_scene_change(current_scene_name: String, entry_tag: String):
 		current_scene = next_scene
 		next_scene = null
 		
-		# Refresh UI to ensure text is correct
 		refresh_quest_ui()
+		
+		# --- NEW: MUSIC SWITCHING LOGIC ---
+		# We check if 'audioManager' exists to prevent crashes
+		if typeof(audioManager) != TYPE_NIL:
+			if "boss" in next_scene_name:
+				# We are entering the Boss Room
+				audioManager.play_music("boss")
+			else:
+				# We are entering Lobby or standard rooms
+				audioManager.play_music("lobby")
+		# ----------------------------------
 		
 		# 4. FADE IN NEW SCENE
 		animation_player.play("fade_out")
