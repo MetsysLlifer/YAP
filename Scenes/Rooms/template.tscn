@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgilmdg62f8ou"]
+[gd_scene load_steps=6 format=3 uid="uid://cgilmdg62f8ou"]
 
+[ext_resource type="PackedScene" uid="uid://bw6xj4r5iijpi" path="res://Scenes/pauseScene.tscn" id="1_4a6qv"]
 [ext_resource type="TileSet" uid="uid://byn51vmwi8h8d" path="res://Scenes/Tileset/Groundbase/floor.tres" id="1_4fkim"]
 [ext_resource type="TileSet" uid="uid://bl808hwuwn3vm" path="res://Scenes/Tileset/Groundbase/wall.tres" id="2_4a6qv"]
 [ext_resource type="TileSet" uid="uid://dln1s0mfo1msf" path="res://Scenes/Tileset/Environment/furnitures.tres" id="3_rlcdd"]
 [ext_resource type="TileSet" uid="uid://ikul50otpb2g" path="res://Scenes/Tileset/Environment/props.tres" id="4_s6nae"]
 
 [node name="template" type="Node2D"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_4a6qv")]
 
 [node name="GroundBase" type="Node2D" parent="."]
 
