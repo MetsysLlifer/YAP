@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://gjumwl2wkcy8"]
+[gd_scene load_steps=7 format=3 uid="uid://gjumwl2wkcy8"]
 
 [ext_resource type="Script" uid="uid://b4vqaja7evjxi" path="res://Scenes/UI/ui.gd" id="1_ahcct"]
 [ext_resource type="Theme" uid="uid://domah0h0b272s" path="res://Scenes/UI/slot.tres" id="2_de23q"]
 [ext_resource type="FontFile" uid="uid://wngk2hqp3kw4" path="res://assets/fonts/GrapeSoda.ttf" id="3_c7mb3"]
+[ext_resource type="PackedScene" uid="uid://c8lb8wpdtlldb" path="res://Scenes/victory.tscn" id="4_fo61o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahcct"]
 bg_color = Color(0.7666196, 0.76661956, 0.76661944, 1)
@@ -61,3 +62,5 @@ offset_top = 15.029633
 offset_right = 173.32738
 offset_bottom = 139.87433
 theme_override_fonts/font = ExtResource("3_c7mb3")
+
+[node name="Victory" parent="." instance=ExtResource("4_fo61o")]

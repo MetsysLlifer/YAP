@@ -5,7 +5,7 @@ extends Node
 #@onready var sfx_player = $SFXPlayer
 
 # Path to your main menu music
-var default_music_path = "res://assets/music/Kevin MacLeod - Itty Bitty 8 Bit  NO COPYRIGHT 8-bit Music.mp3" # CHANGE THIS to your file path!
+var default_music_path = "res://Scenes/Audio/Kevin MacLeod - Itty Bitty 8 Bit  NO COPYRIGHT 8-bit Music.mp3"
 
 func _ready():
 	# 1. AUTO-PLAY: Start music immediately when game opens

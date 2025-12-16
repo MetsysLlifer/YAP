@@ -130,16 +130,30 @@ func update_level_tasks(scene_node: Node) -> void:
 func _on_task_completed(task_type: String) -> void:
 	var type = task_type.to_lower()
 	
-	# Update Local Count (For UI)
+	# 1. Update LOCAL Progress (For UI)
 	if type in local_progress:
 		local_progress[type] += 1
 	
-	# Update Global Count (Only if NOT in boss room, to preserve lobby logic)
+	# 2. Update GLOBAL Progress (Only if NOT in boss room)
 	if current_scene.name.to_lower() != "boss":
 		if not type in global_progress: global_progress[type] = 0
 		global_progress[type] += 1
-		
+	
 	refresh_quest_ui()
+	
+	# 3. CHECK FOR BOSS VICTORY
+	# If we are in the Boss Room, check if EVERYTHING is done.
+	if current_scene.name.to_lower() == "boss":
+		var boss_defeated = true
+		for t in local_totals:
+			if local_progress[t] < local_totals[t]:
+				boss_defeated = false
+				break
+		
+		if boss_defeated:
+			print("BOSS DEFEATED! Triggering Victory.")
+			if ui.has_method("trigger_victory"):
+				ui.trigger_victory()
 
 # --- DOOR LOGIC ---
 

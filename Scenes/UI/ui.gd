@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var slots_container: HBoxContainer = $HBoxContainer
 @onready var quest_label: Label = $QuestLabel 
+@onready var victory_popup = $Victory
 # Get all children of the container (Slot1, Slot2) as an array
 @onready var slots: Array = slots_container.get_children()
 
@@ -133,3 +134,7 @@ func update_quest_list(text: String) -> void:
 		quest_label.text = "No active tasks in this area."
 	else:
 		quest_label.text = text
+
+func trigger_victory() -> void:
+	if victory_popup:
+		victory_popup.show_popup()

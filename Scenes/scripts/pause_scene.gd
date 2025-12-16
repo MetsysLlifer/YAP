@@ -25,7 +25,6 @@ func toggle_pause():
 	menu.visible = true
 	options.visible = false
 	h_slider.value = db_to_linear(audioManager.music_player.volume_db)
-	
 
 # --- CONNECT THESE SIGNALS NEXT ---
 
