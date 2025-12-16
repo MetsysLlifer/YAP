@@ -11,9 +11,13 @@
 
 [sub_resource type="Resource" id="Resource_tory2"]
 script = ExtResource("2_tory2")
+max_speed = 70.0
+health = 75
 metadata/_custom_type_script = "uid://cxh3ddfa0awl7"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_he325"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tory2"]
+radius = 8.0
+height = 26.0
 
 [sub_resource type="Animation" id="Animation_x0jl3"]
 length = 0.001
@@ -53,8 +57,34 @@ _data = {
 &"walk": SubResource("Animation_tory2")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tory2"]
-radius = 6.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0jl3"]
+
+[sub_resource type="Animation" id="Animation_eus45"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effects/Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -7.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Effects/Sprite2D2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_6t23p")]
+}
 
 [sub_resource type="Animation" id="Animation_eus45"]
 length = 0.001
@@ -128,9 +158,7 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_tory2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-visible = false
-position = Vector2(0, 3.38)
-shape = SubResource("CircleShape2D_he325")
+shape = SubResource("CapsuleShape2D_tory2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 10.0
@@ -142,10 +170,11 @@ libraries = {
 
 [node name="HitBox" type="Area2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-1, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-visible = false
-shape = SubResource("CircleShape2D_tory2")
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_x0jl3")
 debug_color = Color(0.7799543, 0, 0.19641519, 0.41960785)
 
 [node name="Item" type="Sprite2D" parent="."]

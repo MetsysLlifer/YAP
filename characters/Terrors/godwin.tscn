@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://b44j5ok564aj2"]
+[gd_scene load_steps=16 format=3 uid="uid://b44j5ok564aj2"]
 
 [ext_resource type="Script" uid="uid://cqq7t6udhj87h" path="res://characters/scripts/terror.gd" id="1_f2tlt"]
 [ext_resource type="Texture2D" uid="uid://be42htnykrbrm" path="res://assets/base/diamond.png" id="1_yu4wx"]
-[ext_resource type="Script" uid="uid://b600652vmp2a4" path="res://characters/scripts/base.gd" id="2_j8k2l"]
+[ext_resource type="Script" uid="uid://duan3gak87v12" path="res://util/Characters/enemy_data.gd" id="2_qtqyn"]
 [ext_resource type="Texture2D" uid="uid://d2wcsixyldqny" path="res://assets/base/Untitled design.png" id="3_8xo6e"]
 [ext_resource type="Texture2D" uid="uid://dbwt0b04rln6e" path="res://assets/base/GODWIN_MONSERATE.png" id="3_qtqyn"]
 
-[sub_resource type="Resource" id="Resource_j8k2l"]
-script = ExtResource("2_j8k2l")
-metadata/_custom_type_script = "uid://b600652vmp2a4"
+[sub_resource type="Resource" id="Resource_nn1br"]
+script = ExtResource("2_qtqyn")
+metadata/_custom_type_script = "uid://duan3gak87v12"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_he325"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtqyn"]
+height = 33.333336
 
 [sub_resource type="Animation" id="Animation_8xo6e"]
 length = 0.001
@@ -351,14 +352,17 @@ _data = {
 &"walk": SubResource("Animation_qtqyn")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j8k2l"]
-radius = 207.03865
+[sub_resource type="CircleShape2D" id="CircleShape2D_qtqyn"]
+radius = 242.07437
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nn1br"]
+radius = 16.0
+height = 34.0
 
 [node name="Godwin" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_f2tlt")
-status = SubResource("Resource_j8k2l")
-metadata/_edit_group_ = true
+status = SubResource("Resource_nn1br")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -366,8 +370,9 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_qtqyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
 scale = Vector2(0.9, 0.9)
-shape = SubResource("CircleShape2D_he325")
+shape = SubResource("CapsuleShape2D_qtqyn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -395,4 +400,11 @@ scale_amount_max = 0.05
 visible = false
 
 [node name="FieldCollision" type="CollisionShape2D" parent="Field"]
-shape = SubResource("CircleShape2D_j8k2l")
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_qtqyn")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_nn1br")

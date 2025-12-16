@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://deh7bv4uh0vof" path="res://Scenes/scripts/scene.gd" id="1_l8gqp"]
 [ext_resource type="PackedScene" uid="uid://cultbrcvpd3hb" path="res://Scenes/Rooms/lobby.tscn" id="2_gr0aa"]
 [ext_resource type="PackedScene" uid="uid://gjumwl2wkcy8" path="res://Scenes/UI/ui.tscn" id="3_1hb0s"]
-[ext_resource type="PackedScene" uid="uid://bw6xj4r5iijpi" path="res://Scenes/pauseScene.tscn" id="4_2i1kg"]
+[ext_resource type="PackedScene" uid="uid://b44j5ok564aj2" path="res://characters/Terrors/godwin.tscn" id="4_2i1kg"]
 
 [sub_resource type="Animation" id="Animation_1hb0s"]
 length = 0.001
@@ -80,6 +80,9 @@ color = Color(0, 0, 0, 0)
 
 [node name="UI" parent="." instance=ExtResource("3_1hb0s")]
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_2i1kg")]
+[node name="Godwin" parent="." instance=ExtResource("4_2i1kg")]
+position = Vector2(156, 85)
+
+[node name="Cooldown" type="Timer" parent="Godwin"]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

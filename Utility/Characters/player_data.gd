@@ -10,7 +10,6 @@ extends CharacterData
 # null = empty slot.
 @export var inventory: Array[Resource] = [null, null]
 
-
 signal inventory_updated
 
 # Helper function to add an item to the first empty slot

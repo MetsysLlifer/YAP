@@ -15,6 +15,10 @@ run/main_scene="uid://cp3gpekdfc4u1"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://c310l5djhlxt1"
 
+[autoload]
+
+audioManager="*res://Scenes/Audio/AudioManager.tscn"
+
 [display]
 
 window/size/viewport_width=320
@@ -22,6 +26,10 @@ window/size/viewport_height=180
 window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[dotnet]
+
+project/assembly_name="Game"
 
 [editor_plugins]
 

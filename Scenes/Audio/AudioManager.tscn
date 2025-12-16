@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://db7aeynimh8f1"]
+
+[ext_resource type="Script" uid="uid://bbwusm80cqmvp" path="res://Scenes/Audio/audio_manager.gd" id="1_i2xd5"]
+[ext_resource type="AudioStream" uid="uid://dcv28mi6u4doh" path="res://Scenes/Audio/Kevin MacLeod - Itty Bitty 8 Bit  NO COPYRIGHT 8-bit Music.mp3" id="2_whaik"]
+
+[node name="AudioManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_i2xd5")
+
+[node name="musicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_whaik")
+autoplay = true
+bus = &"Music"

@@ -5,6 +5,7 @@ extends CanvasLayer
 # Get all children of the container (Slot1, Slot2) as an array
 @onready var slots: Array = slots_container.get_children()
 
+@onready var label: Label = $Label
 var player: CharacterBody2D
 # Start with -1. This means "No slot is selected"
 var current_slot_index: int = -1 
@@ -22,6 +23,12 @@ func _ready() -> void:
 			player.status.inventory_updated.connect(update_inventory_visuals)
 			# Run it once to load any starting items
 			update_inventory_visuals()
+	#Update current player when accessing to another scene
+	
+	owner.player_changed.connect(updatePlayer)
+	player.status.health_changed.connect(updateHealth)
+	health_bar.value = player.status.health
+	label.text = str(1.0 + (1.0 - (health_bar.value / 100)) * 2.0) + " / 1.0"
 
 	for i in range(slots.size()):
 		var slot_button = slots[i]
@@ -89,8 +96,10 @@ func updatePlayer(next_player):
 	player = next_player
 	# Re-connect health signals if needed here as well
 
-func updateHealth(health: int):
+func updateHealth(health: float):
 	health_bar.value = health
+	var mapped = 1.0 + (1.0 - (health / 100)) * 2.0
+	label.text = str(mapped) + " / 1.0"
 
 func update_inventory_visuals() -> void:
 	var inventory_data = player.status.inventory
