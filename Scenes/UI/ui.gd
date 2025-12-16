@@ -111,15 +111,20 @@ func updateHealth(health: float):
 	label.text = str(mapped).pad_decimals(1) + " / 1.0"
 
 func update_inventory_visuals() -> void:
+	# 1. SAFETY CHECK:
+	# If player is null OR if the player node was deleted (freed), stop here.
+	if not is_instance_valid(player):
+		return
+
+	# 2. Now it is safe to access player.status
 	var inventory_data = player.status.inventory
 	
 	for i in range(slots.size()):
 		if i < inventory_data.size():
 			var item = inventory_data[i]
 			
-			# Check for 'texture' (assuming your Resource has a texture property)
 			if item != null and "texture" in item and item.texture:
-				slots[i].icon = item.texture  # Assign the item's texture to the button's icon
+				slots[i].icon = item.texture 
 			else:
 				slots[i].icon = null
 

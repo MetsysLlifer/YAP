@@ -52,6 +52,6 @@ entry_tag = "to_oop"
 position = Vector2(1536, 256)
 entry_tag = "to_networking"
 
-[node name="from_finalboss" parent="Portals" instance=ExtResource("4_5g40f")]
+[node name="from_boss" parent="Portals" instance=ExtResource("4_5g40f")]
 position = Vector2(1728, 128)
-entry_tag = "to_finalboss"
+entry_tag = "to_boss"

@@ -9,28 +9,26 @@ signal player_changed(player)
 var next_scene
 
 # --- CONFIGURATION ---
-# Added "boss" here. Change "1" to however many tasks/enemies are in the boss room.
-var global_max_tasks = {
+# Requirements to UNLOCK the Boss Room from the Lobby
+var global_requirements = {
 	"dsa": 5, 
 	"networking": 5, 
-	"oop": 5,
-	"boss": 1 
+	"oop": 5
 }
 
 # --- TRACKING ---
-var task_progress = {"dsa": 0, "networking": 0, "oop": 0, "boss": 0}
-var task_totals = {"dsa": 0, "networking": 0, "oop": 0, "boss": 0}
+var global_progress = {"dsa": 0, "networking": 0, "oop": 0}
+var local_totals = {}
+var local_progress = {}
 
 func _ready() -> void:
 	player = current_scene.find_child("Player")
 	connect_level_signals(current_scene)
-	# Initial update to set correct colors on game start
 	update_level_tasks(current_scene)
 
 func connect_level_signals(level_node: Node) -> void:
 	var portals_container = level_node.find_child("Portals")
 	
-	# Update tasks immediately so UI shows correct state
 	update_level_tasks(level_node)
 	
 	if portals_container:
@@ -38,7 +36,18 @@ func connect_level_signals(level_node: Node) -> void:
 			if not portal.scene_changed.is_connected(handle_scene_change):
 				portal.scene_changed.connect(handle_scene_change, CONNECT_DEFERRED)
 
+# --- SCENE SWITCHING (WITH "VOID" FIX) ---
+
 func handle_scene_change(current_scene_name: String, entry_tag: String):
+	# 1. FREEZE OLD SCENE (Don't hide yet to prevent flickering)
+	if current_scene:
+		current_scene.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	# 2. FADE TO BLACK
+	animation_player.play("fade_in")
+	await animation_player.animation_finished
+	
+	# 3. LOAD NEXT SCENE
 	var next_scene_name: String = ""
 	
 	match current_scene_name:
@@ -47,7 +56,6 @@ func handle_scene_change(current_scene_name: String, entry_tag: String):
 				"to_oop": next_scene_name = "Rooms/oop"
 				"to_dsa": next_scene_name = "Rooms/dsa"
 				"to_networking": next_scene_name = "Rooms/networking"
-				# NEW: Boss Room Transition
 				"to_boss": next_scene_name = "Rooms/boss"
 				_: return
 		"oop", "dsa", "networking", "boss":
@@ -61,6 +69,7 @@ func handle_scene_change(current_scene_name: String, entry_tag: String):
 		next_scene = scene_resource.instantiate()
 		add_child(next_scene)
 		
+		# Position Player
 		var spawn_marker = next_scene.find_child(entry_tag)
 		var next_player = next_scene.find_child("Player")
 		
@@ -71,32 +80,64 @@ func handle_scene_change(current_scene_name: String, entry_tag: String):
 			player = next_player
 			player_changed.emit(player)
 		
+		# Setup Logic
+		connect_level_signals(next_scene)
 		update_level_tasks(next_scene)
 		
-		animation_player.play("fade_in")
+		# Remove Old Scene
+		current_scene.queue_free()
+		current_scene = next_scene
+		next_scene = null
+		
+		# Refresh UI to ensure text is correct
+		refresh_quest_ui()
+		
+		# 4. FADE IN NEW SCENE
+		animation_player.play("fade_out")
+	else:
+		print("Error: Could not load scene: " + next_scene_name)
+		current_scene.process_mode = Node.PROCESS_MODE_INHERIT
+		animation_player.play("fade_out")
 
 # --- TASK LOGIC ---
 
 func update_level_tasks(scene_node: Node) -> void:
-	# Reset local totals including boss
-	task_totals = {"dsa": 0, "networking": 0, "oop": 0, "boss": 0}
+	# ... existing reset code ...
+	local_totals = {}
+	local_progress = {}
 	
 	var task_container = scene_node.find_child("Tasks")
 	if task_container:
 		for task in task_container.get_children():
 			if task.status and "item_name" in task.status:
 				var type = task.status.item_name.to_lower()
-				if type in task_totals:
-					task_totals[type] += 1
-					if not task.task_completed.is_connected(_on_task_completed):
-						task.task_completed.connect(_on_task_completed)
+				
+				# --- ADD THIS DEBUG PRINT ---
+				print("Found Task: ", task.name, " | Type: ", type)
+				# ----------------------------
+				
+				if not type in local_totals:
+					local_totals[type] = 0
+					local_progress[type] = 0
+				
+				local_totals[type] += 1
+				
+				if not task.task_completed.is_connected(_on_task_completed):
+					task.task_completed.connect(_on_task_completed)
 	
 	refresh_quest_ui()
 
 func _on_task_completed(task_type: String) -> void:
 	var type = task_type.to_lower()
-	if type in task_progress:
-		task_progress[type] += 1
+	
+	# Update Local Count (For UI)
+	if type in local_progress:
+		local_progress[type] += 1
+	
+	# Update Global Count (Only if NOT in boss room, to preserve lobby logic)
+	if current_scene.name.to_lower() != "boss":
+		if not type in global_progress: global_progress[type] = 0
+		global_progress[type] += 1
 		
 	refresh_quest_ui()
 
@@ -107,72 +148,74 @@ func check_room_completion() -> void:
 	if not portals_container:
 		return
 
-	# SCENARIO A: Inside a Task Room (Networking, DSA, OOP, or BOSS)
-	if task_totals.values().max() > 0: 
+	# SCENARIO A: Inside Task Room (Any room with tasks)
+	if local_totals.size() > 0: 
 		var room_is_complete = true
-		for type in task_totals:
-			if task_totals[type] > 0:
-				if task_progress[type] < global_max_tasks[type]:
-					room_is_complete = false
+		for type in local_totals:
+			if local_progress[type] < local_totals[type]:
+				room_is_complete = false
+				break
 		
 		for portal in portals_container.get_children():
 			if portal.has_method("set_portal_status"):
 				if not room_is_complete:
-					portal.set_portal_status(1) # RED (Locked inside)
+					portal.set_portal_status(1) # RED (Locked)
 				else:
 					portal.set_portal_status(0) # WHITE (Open)
 
-	# SCENARIO B: Inside the Lobby
+	# SCENARIO B: Inside Lobby
 	else:
 		for portal in portals_container.get_children():
 			if portal.has_method("set_portal_status"):
 				var tag = portal.entry_tag.to_lower()
 				
-				# Identify which door this is
-				var target_category = ""
-				if "networking" in tag: target_category = "networking"
-				elif "dsa" in tag: target_category = "dsa"
-				elif "oop" in tag: target_category = "oop"
-				elif "boss" in tag: target_category = "boss"
-				
-				# Apply Logic
-				if target_category == "boss":
-					# --- SPECIAL BOSS LOGIC ---
-					# 1. Check if the Boss itself is defeated
-					if is_category_finished("boss"):
-						portal.set_portal_status(2) # GREEN (Game Over/Done)
-					# 2. Check if prerequisites (DSA, Net, OOP) are met
-					elif is_category_finished("dsa") and is_category_finished("networking") and is_category_finished("oop"):
-						portal.set_portal_status(0) # WHITE (Open for Battle!)
+				if "boss" in tag:
+					if is_global_qualified("dsa") and is_global_qualified("networking") and is_global_qualified("oop"):
+						portal.set_portal_status(0) 
 					else:
-						portal.set_portal_status(1) # RED (Locked - Finish other rooms first)
-				
-				elif target_category != "":
-					# Standard Logic for DSA, Net, OOP
-					if is_category_finished(target_category):
-						portal.set_portal_status(2) # GREEN (Done)
-					else:
-						portal.set_portal_status(0) # WHITE (Open)
+						portal.set_portal_status(1)
+				else:
+					var category = ""
+					if "networking" in tag: category = "networking"
+					elif "dsa" in tag: category = "dsa"
+					elif "oop" in tag: category = "oop"
+					
+					if category != "":
+						if is_global_qualified(category):
+							portal.set_portal_status(2) # GREEN
+						else:
+							portal.set_portal_status(0) # WHITE
 
-func is_category_finished(category: String) -> bool:
-	return task_progress.get(category, 0) >= global_max_tasks.get(category, 1)
+func is_global_qualified(category: String) -> bool:
+	return global_progress.get(category, 0) >= global_requirements.get(category, 5)
 
 func refresh_quest_ui() -> void:
 	var display_text = ""
 	
-	if task_totals["networking"] > 0:
-		display_text += "Configuring network: %d/%d\n" % [task_progress["networking"], global_max_tasks["networking"]]
-	if task_totals["dsa"] > 0:
-		display_text += "Data Structure problems: %d/%d\n" % [task_progress["dsa"], global_max_tasks["dsa"]]
-	if task_totals["oop"] > 0:
-		display_text += "Fix Object Oriented bugs: %d/%d\n" % [task_progress["oop"], global_max_tasks["oop"]]
-	if task_totals["boss"] > 0:
-		display_text += "Final Exam: %d/%d\n" % [task_progress["boss"], global_max_tasks["boss"]]
-	
-	if display_text == "":
-		# Optional: Show Boss Status in Lobby
-		if is_category_finished("dsa") and is_category_finished("networking") and is_category_finished("oop"):
-			display_text = "FINAL BOSS UNLOCKED!"
+	# If we are in a room with tasks (Main Rooms OR Boss Room)
+	if local_totals.size() > 0:
+		# Force a nice order for the display
+		var order_list = ["dsa", "networking", "oop"]
+		
+		# Add any other types found that aren't in the standard list
+		for t in local_totals.keys():
+			if not t in order_list:
+				order_list.append(t)
+		
+		# Generate the text line by line
+		for type in order_list:
+			if type in local_totals:
+				var pretty_name = type.capitalize()
+				if type == "dsa": pretty_name = "Data Structures"
+				if type == "oop": pretty_name = "Object Oriented"
+				if type == "networking": pretty_name = "Networking"
+				
+				display_text += "%s: %d/%d\n" % [pretty_name, local_progress[type], local_totals[type]]
+				
+	else:
+		# Lobby Text
+		if is_global_qualified("dsa") and is_global_qualified("networking") and is_global_qualified("oop"):
+			display_text = "FINAL EXAM UNLOCKED!\nEnter the Boss Room."
 		else:
 			display_text = "Complete all modules to unlock Final Exam."
 
@@ -180,15 +223,3 @@ func refresh_quest_ui() -> void:
 		ui.update_quest_list(display_text)
 	
 	check_room_completion()
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	match anim_name:
-		"fade_in":
-			connect_level_signals(next_scene)
-			current_scene.queue_free()
-			current_scene = next_scene
-			next_scene = null
-			
-			refresh_quest_ui()
-			
-			animation_player.play("fade_out")

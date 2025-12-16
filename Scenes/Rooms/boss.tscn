@@ -1,0 +1,153 @@
+[gd_scene load_steps=19 format=4 uid="uid://djfrc8ngu281b"]
+
+[ext_resource type="TileSet" uid="uid://byn51vmwi8h8d" path="res://Scenes/Tileset/Groundbase/floor.tres" id="1_0eqby"]
+[ext_resource type="TileSet" uid="uid://bl808hwuwn3vm" path="res://Scenes/Tileset/Groundbase/wall.tres" id="2_isovh"]
+[ext_resource type="TileSet" uid="uid://dln1s0mfo1msf" path="res://Scenes/Tileset/Environment/furnitures.tres" id="3_ugs2i"]
+[ext_resource type="TileSet" uid="uid://ikul50otpb2g" path="res://Scenes/Tileset/Environment/props.tres" id="4_bdwrq"]
+[ext_resource type="PackedScene" uid="uid://bkfenph3aywwn" path="res://characters/player.tscn" id="5_rso2t"]
+[ext_resource type="PackedScene" uid="uid://b44j5ok564aj2" path="res://characters/Terrors/godwin.tscn" id="6_vo6cb"]
+[ext_resource type="Script" uid="uid://cmftvbclhauxj" path="res://characters/scripts/godwin.gd" id="7_gak7r"]
+[ext_resource type="PackedScene" uid="uid://clj047th5hvb7" path="res://Objects/Items/task.tscn" id="8_8kd0p"]
+[ext_resource type="Script" uid="uid://db50oho3xc5ma" path="res://Utility/Task/task_data.gd" id="9_b7j1u"]
+[ext_resource type="Texture2D" uid="uid://cochw5gqiw3wg" path="res://assets/base/network.png" id="10_pmk4r"]
+[ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="11_4bi6r"]
+[ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="12_jse4q"]
+[ext_resource type="PackedScene" uid="uid://buvyemd7p3co" path="res://Objects/Portal.tscn" id="13_rhkc3"]
+[ext_resource type="PackedScene" uid="uid://dcneye5ju7kay" path="res://characters/Turrets/turret.tscn" id="14_7cd0l"]
+[ext_resource type="Script" path="res://characters/scripts/turret_child.gd" id="15_vcshg"]
+
+[sub_resource type="Resource" id="Resource_chxpj"]
+script = ExtResource("9_b7j1u")
+item_name = "networking"
+metadata/_custom_type_script = "uid://db50oho3xc5ma"
+
+[sub_resource type="Resource" id="Resource_0eqby"]
+script = ExtResource("9_b7j1u")
+item_name = "oop"
+metadata/_custom_type_script = "uid://db50oho3xc5ma"
+
+[sub_resource type="Resource" id="Resource_isovh"]
+script = ExtResource("9_b7j1u")
+item_name = "dsa"
+metadata/_custom_type_script = "uid://db50oho3xc5ma"
+
+[node name="Boss" type="Node2D"]
+
+[node name="GroundBase" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMapLayer" parent="GroundBase"]
+tile_map_data = PackedByteArray("AAAAAAAAAQAGAAQAAAAAAAEAAQACAAIAAAAAAAIAAQAFAAQAAAAAAAMAAQACAAUAAAAAAAQAAQAHAAMAAAAAAAUAAQAHAAMAAAAAAAYAAQAFAAUAAAAAAAcAAQAFAAUAAAAAAAgAAQAGAAIAAAAAAAkAAQADAAQAAAAAAAoAAQADAAIAAAAAAAsAAQAEAAMAAAABAAAAAQAGAAMAAAABAAEAAQAFAAIAAAABAAIAAQACAAUAAAABAAMAAQAGAAMAAAABAAQAAQACAAUAAAABAAUAAQADAAQAAAABAAYAAQAHAAIAAAABAAcAAQAGAAMAAAABAAgAAQAFAAUAAAABAAkAAQAHAAIAAAABAAoAAQAEAAIAAAABAAsAAQAGAAMAAAACAAAAAQAHAAMAAAACAAEAAQAGAAQAAAACAAIAAQADAAIAAAACAAMAAQACAAQAAAACAAQAAQADAAMAAAACAAUAAQAFAAQAAAACAAYAAQACAAMAAAACAAcAAQAEAAMAAAACAAgAAQAFAAMAAAACAAkAAQAHAAIAAAACAAoAAQACAAMAAAACAAsAAQAGAAMAAAADAAAAAQADAAUAAAADAAEAAQAFAAMAAAADAAIAAQAEAAIAAAADAAMAAQAHAAMAAAADAAQAAQACAAMAAAADAAUAAQAHAAUAAAADAAYAAQAGAAUAAAADAAcAAQAEAAMAAAADAAgAAQAFAAIAAAADAAkAAQADAAIAAAADAAoAAQAFAAMAAAADAAsAAQAHAAIAAAAEAAAAAQAFAAIAAAAEAAEAAQAEAAIAAAAEAAIAAQAFAAMAAAAEAAMAAQACAAMAAAAEAAQAAQAEAAMAAAAEAAUAAQAFAAUAAAAEAAYAAQAGAAQAAAAEAAcAAQAGAAQAAAAEAAgAAQAGAAMAAAAEAAkAAQAFAAUAAAAEAAoAAQAGAAIAAAAEAAsAAQAFAAQAAAAFAAAAAQAGAAQAAAAFAAEAAQAEAAMAAAAFAAIAAQAGAAIAAAAFAAMAAQAEAAIAAAAFAAQAAQAGAAUAAAAFAAUAAQADAAIAAAAFAAYAAQAHAAUAAAAFAAcAAQAGAAQAAAAFAAgAAQADAAQAAAAFAAkAAQAGAAQAAAAFAAoAAQAFAAUAAAAFAAsAAQACAAQAAAAGAAAAAQAEAAIAAAAGAAEAAQAFAAMAAAAGAAIAAQAHAAUAAAAGAAMAAQACAAQAAAAGAAQAAQAGAAMAAAAGAAUAAQAFAAIAAAAGAAcAAQAEAAMAAAAGAAgAAQACAAMAAAAGAAkAAQACAAIAAAAGAAoAAQAEAAMAAAAGAAsAAQAGAAMAAAAHAAAAAQACAAIAAAAHAAEAAQAHAAMAAAAHAAIAAQAFAAIAAAAHAAMAAQAHAAUAAAAHAAQAAQACAAIAAAAHAAUAAQAEAAMAAAAHAAYAAQAFAAUAAAAHAAcAAQAEAAUAAAAHAAgAAQAFAAQAAAAHAAkAAQAHAAMAAAAHAAoAAQAFAAMAAAAHAAsAAQAEAAUAAAAIAAAAAQAFAAMAAAAIAAEAAQAHAAIAAAAIAAIAAQACAAUAAAAIAAMAAQACAAMAAAAIAAQAAQAEAAQAAAAIAAUAAQAFAAIAAAAIAAYAAQAHAAUAAAAIAAcAAQADAAQAAAAIAAgAAQAGAAUAAAAIAAkAAQAEAAMAAAAIAAoAAQACAAUAAAAIAAsAAQAFAAUAAAAJAAAAAQAHAAIAAAAJAAEAAQACAAIAAAAJAAIAAQAFAAQAAAAJAAMAAQAHAAMAAAAJAAQAAQAEAAQAAAAJAAUAAQAEAAIAAAAJAAYAAQAFAAMAAAAJAAcAAQACAAIAAAAJAAgAAQAHAAUAAAAJAAkAAQADAAMAAAAJAAoAAQACAAQAAAAJAAsAAQADAAQAAAAKAAAAAQAEAAMAAAAKAAEAAQAEAAIAAAAKAAIAAQAGAAIAAAAKAAMAAQAFAAQAAAAKAAQAAQAGAAQAAAAKAAUAAQAEAAQAAAAKAAYAAQADAAIAAAAKAAcAAQAFAAQAAAAKAAgAAQADAAIAAAAKAAkAAQAGAAMAAAAKAAoAAQAFAAQAAAAKAAsAAQAFAAIAAAALAAAAAQACAAIAAAALAAEAAQAHAAQAAAALAAIAAQAGAAQAAAALAAMAAQACAAMAAAALAAQAAQAFAAMAAAALAAUAAQAHAAUAAAALAAYAAQAGAAQAAAALAAcAAQACAAUAAAALAAgAAQAEAAMAAAALAAkAAQAGAAIAAAALAAoAAQACAAUAAAALAAsAAQAFAAQAAAAMAAAAAQAGAAQAAAAMAAEAAQADAAUAAAAMAAIAAQAFAAQAAAAMAAMAAQAGAAIAAAAMAAQAAQAEAAMAAAAMAAUAAQAFAAQAAAAMAAYAAQAGAAMAAAAMAAcAAQACAAUAAAAMAAgAAQADAAUAAAAMAAkAAQAEAAUAAAAMAAoAAQADAAIAAAAMAAsAAQAFAAQAAAANAAAAAQACAAUAAAANAAEAAQAEAAUAAAANAAIAAQAEAAMAAAANAAMAAQADAAQAAAANAAQAAQAFAAQAAAANAAUAAQAEAAUAAAANAAYAAQAEAAMAAAANAAcAAQAGAAUAAAANAAgAAQADAAQAAAANAAkAAQAFAAQAAAANAAoAAQACAAUAAAANAAsAAQAEAAMAAAAOAAAAAQAEAAUAAAAOAAEAAQADAAUAAAAOAAIAAQAHAAUAAAAOAAMAAQAGAAMAAAAOAAQAAQACAAIAAAAOAAUAAQAGAAQAAAAOAAYAAQAGAAUAAAAOAAcAAQAGAAMAAAAOAAgAAQAGAAUAAAAOAAkAAQADAAQAAAAOAAoAAQAHAAMAAAAOAAsAAQAHAAMAAAAPAAAAAQADAAMAAAAPAAEAAQAHAAQAAAAPAAIAAQAHAAQAAAAPAAMAAQAHAAMAAAAPAAQAAQAEAAQAAAAPAAUAAQAEAAUAAAAPAAYAAQAGAAIAAAAPAAcAAQAHAAIAAAAPAAgAAQAGAAUAAAAPAAkAAQACAAIAAAAPAAoAAQAFAAMAAAAPAAsAAQADAAIAAAAQAAAAAQAEAAUAAAAQAAEAAQAGAAMAAAAQAAIAAQAFAAUAAAAQAAMAAQAEAAQAAAAQAAQAAQAGAAQAAAAQAAUAAQAHAAIAAAAQAAYAAQAHAAIAAAAQAAcAAQAGAAUAAAAQAAgAAQACAAMAAAAQAAkAAQADAAQAAAAQAAoAAQADAAQAAAAQAAsAAQAGAAUAAAARAAAAAQAFAAUAAAARAAEAAQAGAAIAAAARAAIAAQAGAAIAAAARAAMAAQAEAAMAAAARAAQAAQAHAAUAAAARAAUAAQACAAIAAAARAAYAAQACAAMAAAARAAcAAQAFAAIAAAARAAgAAQAHAAIAAAARAAkAAQACAAMAAAARAAoAAQAEAAQAAAARAAsAAQADAAMAAAASAAAAAQAFAAQAAAASAAEAAQAEAAQAAAASAAIAAQACAAIAAAASAAMAAQAGAAUAAAASAAQAAQAGAAIAAAASAAUAAQAEAAIAAAASAAYAAQAGAAIAAAASAAcAAQAHAAUAAAASAAgAAQADAAIAAAASAAkAAQAFAAUAAAASAAoAAQACAAMAAAASAAsAAQAEAAQAAAATAAAAAQAFAAIAAAATAAEAAQAGAAMAAAATAAIAAQAHAAMAAAATAAMAAQAGAAMAAAATAAQAAQAFAAMAAAATAAUAAQAEAAUAAAATAAYAAQAGAAUAAAATAAcAAQAHAAIAAAATAAgAAQAGAAQAAAATAAkAAQAGAAQAAAATAAoAAQAEAAMAAAATAAsAAQAFAAQAAAAGAAYAAQACAAIAAAA=")
+tile_set = ExtResource("1_0eqby")
+
+[node name="Wall" type="TileMapLayer" parent="GroundBase"]
+tile_map_data = PackedByteArray("AAD/////AAAMAAwAAAD//wAAAAAMAAwAAAD//wEAAAAMAAwAAAD//wIAAAAMAAwAAAD//wMAAAAMAAwAAAD//wQAAAAMAAwAAAD//wUAAAAMAAwAAAD//wYAAAAMAAwAAAAAAAYAAAAMAAwAAAABAAYAAAAMAAwAAAACAAYAAAAMAAwAAAADAAYAAAAMAAwAAAAEAAYAAAAMAAwAAAAFAAYAAAAMAAwAAAAGAAYAAAAMAAwAAAAHAAYAAAAMAAwAAAAIAAYAAAAMAAwAAAAJAAYAAAAMAAwAAAAKAAYAAAAMAAwAAAAKAAUAAAAMAAwAAAAKAAQAAAAMAAwAAAAKAAMAAAAMAAwAAAAKAAIAAAAMAAwAAAAKAAEAAAAMAAwAAAAKAAAAAAAMAAwAAAAKAP//AAAMAAwAAAAJAP//AAAMAAwAAAAIAP//AAAMAAwAAAAHAP//AAAMAAwAAAAGAP//AAAMAAwAAAAFAP//AAAMAAwAAAAEAP//AAAMAAwAAAADAP//AAAMAAwAAAACAP//AAAMAAwAAAABAP//AAAMAAwAAAAAAP//AAAMAAwAAAA=")
+tile_set = ExtResource("2_isovh")
+
+[node name="Environment" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Furniture" type="TileMapLayer" parent="Environment"]
+y_sort_enabled = true
+scale = Vector2(0.1, 0.1)
+tile_set = ExtResource("3_ugs2i")
+
+[node name="Props" type="TileMapLayer" parent="Environment"]
+y_sort_enabled = true
+scale = Vector2(0.1, 0.1)
+tile_map_data = PackedByteArray("AAAtACMAAAAkACkAAABLACMAAAAkACkAAAB9ACMAAAAkACkAAACbACMAAAAkACkAAABLAA8AAAAkACkAAAAtAA8AAAAkACkAAAB9AA8AAAAkACkAAACbAA8AAAAkACkAAAAtAFUAAAAkACkAAABLAFUAAAAkACkAAAAtAGkAAAAkACkAAABLAGkAAAAkACkAAAB9AFUAAAAkACkAAACbAFUAAAAkACkAAAB9AGkAAAAkACkAAACbAGkAAAAkACkAAABoADoAAAAkACkAAABKADoAAAAkACkAAACGADoAAAAkACkAAABIAAwAAgABAAIAAABKAAwAAgABAAoAAABPAAwAAgAIABAAAAApAAwAAgAIABAAAACDADgAAgAIABAAAACFADcAAgAIABAAAACJADcAAgABAAoAAABQAFIAAgAFAAoAAABOAFIAAgAIAAoAAAAwAFIAAgABAAYAAABHADYAAAASACMAAABMADYAAAAEABYAAABoADUAAAACAAQAAABoADgAAAA1ABIAAABjADcAAAA3AAMAAABsADgAAAAwABwAAAB9AB4AAAACAAQAAAB9AAoAAAACAAQAAAAuAGQAAAACAAQAAAB9AGQAAAACAAQAAAAtAB4AAAACAAQAAACbAFAAAAACAAQAAABLAGQAAAACAAQAAAB7AFIAAAASABoAAABMAB8AAAASABoAAACbAB8AAAASABoAAACeAAwAAAAgABgAAACaAAwAAAAnABAAAACZAGYAAAAnABAAAACdAGYAAAAnABAAAAA=")
+tile_set = ExtResource("4_bdwrq")
+
+[node name="Player" parent="Environment" instance=ExtResource("5_rso2t")]
+position = Vector2(320, 0)
+
+[node name="Godwin" parent="Environment" instance=ExtResource("6_vo6cb")]
+position = Vector2(32, 32)
+script = ExtResource("7_gak7r")
+status = null
+
+[node name="Cooldown" type="Timer" parent="Environment/Godwin"]
+
+[node name="Tasks" type="CanvasGroup" parent="Environment"]
+y_sort_enabled = true
+
+[node name="Task" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(238.79439, 197.72781)
+status = SubResource("Resource_chxpj")
+
+[node name="Task2" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(403.1395, 284.3509)
+status = SubResource("Resource_chxpj")
+
+[node name="Task3" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(498.44656, 60.30317)
+status = SubResource("Resource_chxpj")
+
+[node name="Task4" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(498.88074, 347.96133)
+status = SubResource("Resource_chxpj")
+
+[node name="Task5" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(242.98161, 348.3688)
+status = SubResource("Resource_chxpj")
+
+[node name="Task6" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(148.03815, 347.9613)
+status = SubResource("Resource_0eqby")
+
+[node name="Task7" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(499.6957, 283.17154)
+status = SubResource("Resource_0eqby")
+
+[node name="Task8" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(333.44275, 198.41513)
+status = SubResource("Resource_0eqby")
+
+[node name="Task9" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(403.93726, 123.845795)
+status = SubResource("Resource_0eqby")
+
+[node name="Task10" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(402.30734, 59.871025)
+status = SubResource("Resource_0eqby")
+
+[node name="Task11" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(242.57414, 57.018654)
+status = SubResource("Resource_isovh")
+
+[node name="Task12" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(146.81572, 57.018654)
+status = SubResource("Resource_isovh")
+
+[node name="Task13" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(431.64612, 197.19269)
+status = SubResource("Resource_isovh")
+
+[node name="Task14" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(143.96335, 281.9491)
+status = SubResource("Resource_isovh")
+
+[node name="Task15" parent="Environment/Tasks" instance=ExtResource("8_8kd0p")]
+position = Vector2(244.2041, 282.76404)
+status = SubResource("Resource_isovh")
+
+[node name="Portals" type="Node2D" parent="."]
+
+[node name="to_boss" parent="Portals" instance=ExtResource("13_rhkc3")]
+position = Vector2(0, 192)
+entry_tag = "from_bossa"
+
+[node name="Turrets" type="CanvasGroup" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="turret" parent="Turrets" instance=ExtResource("14_7cd0l")]
+position = Vector2(164.79042, 277.86624)
+script = ExtResource("15_vcshg")
+
+[node name="Cooldown" type="Timer" parent="Turrets/turret"]
+
+[node name="turret2" parent="Turrets" instance=ExtResource("14_7cd0l")]
+position = Vector2(471.75983, 276.46628)
+script = ExtResource("15_vcshg")
+
+[node name="Cooldown" type="Timer" parent="Turrets/turret2"]
