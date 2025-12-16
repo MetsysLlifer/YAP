@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var slots_container: HBoxContainer = $HBoxContainer
+@onready var quest_label: Label = $QuestLabel 
 # Get all children of the container (Slot1, Slot2) as an array
 @onready var slots: Array = slots_container.get_children()
 
@@ -15,7 +16,8 @@ func _ready() -> void:
 	owner.player_changed.connect(updatePlayer)
 	
 	if player:
-		player.status.health_changed.connect(updateHealth)
+		if player.status.has_signal("health_changed"):
+			player.status.health_changed.connect(updateHealth)
 		health_bar.value = player.status.health
 		
 		# Connect to inventory updates
@@ -23,12 +25,9 @@ func _ready() -> void:
 			player.status.inventory_updated.connect(update_inventory_visuals)
 			# Run it once to load any starting items
 			update_inventory_visuals()
-	#Update current player when accessing to another scene
-	
-	owner.player_changed.connect(updatePlayer)
-	player.status.health_changed.connect(updateHealth)
-	health_bar.value = player.status.health
-	label.text = str(1.0 + (1.0 - (health_bar.value / 100)) * 2.0) + " / 1.0"
+			
+	# Update label text initially
+	updateHealth(player.status.health)
 
 	for i in range(slots.size()):
 		var slot_button = slots[i]
@@ -62,7 +61,8 @@ func select_slot(index: int) -> void:
 	for i in range(slots.size()):
 		if i == index:
 			slots[i].button_pressed = true
-			slots[i].grab_focus() 
+			if slots[i].has_method("grab_focus"):
+				slots[i].grab_focus() 
 		else:
 			slots[i].button_pressed = false
 
@@ -94,12 +94,21 @@ func deselect_all() -> void:
 # --- Existing Helper Functions ---
 func updatePlayer(next_player):
 	player = next_player
-	# Re-connect health signals if needed here as well
+	# Re-connect health signals if needed
+	if player and player.status:
+		if not player.status.health_changed.is_connected(updateHealth):
+			player.status.health_changed.connect(updateHealth)
+		if not player.status.inventory_updated.is_connected(update_inventory_visuals):
+			player.status.inventory_updated.connect(update_inventory_visuals)
+		
+		# Refresh visuals for new player
+		updateHealth(player.status.health)
+		update_inventory_visuals()
 
 func updateHealth(health: float):
 	health_bar.value = health
 	var mapped = 1.0 + (1.0 - (health / 100)) * 2.0
-	label.text = str(mapped) + " / 1.0"
+	label.text = str(mapped).pad_decimals(1) + " / 1.0"
 
 func update_inventory_visuals() -> void:
 	var inventory_data = player.status.inventory
@@ -108,8 +117,14 @@ func update_inventory_visuals() -> void:
 		if i < inventory_data.size():
 			var item = inventory_data[i]
 			
-			# CHANGE HERE: Check for 'texture', not 'icon'
-			if item != null and item.texture:
+			# Check for 'texture' (assuming your Resource has a texture property)
+			if item != null and "texture" in item and item.texture:
 				slots[i].icon = item.texture  # Assign the item's texture to the button's icon
 			else:
 				slots[i].icon = null
+
+func update_quest_list(text: String) -> void:
+	if text == "":
+		quest_label.text = "No active tasks in this area."
+	else:
+		quest_label.text = text

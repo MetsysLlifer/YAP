@@ -16,7 +16,7 @@
 
 [sub_resource type="Resource" id="Resource_ewj7t"]
 script = ExtResource("8_4d5sj")
-item_name = "network"
+item_name = "networking"
 metadata/_custom_type_script = "uid://db50oho3xc5ma"
 
 [node name="Networking" type="Node2D"]
@@ -55,26 +55,26 @@ status = null
 
 [node name="Cooldown" type="Timer" parent="Environment/Godwin"]
 
-[node name="Task" type="CanvasGroup" parent="Environment"]
+[node name="Tasks" type="CanvasGroup" parent="Environment"]
 y_sort_enabled = true
 
-[node name="Task" parent="Environment/Task" instance=ExtResource("7_2val7")]
+[node name="Task" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(50.232357, 123.23415)
 status = SubResource("Resource_ewj7t")
 
-[node name="Task2" parent="Environment/Task" instance=ExtResource("7_2val7")]
+[node name="Task2" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(47.67932, 349.20346)
 status = SubResource("Resource_ewj7t")
 
-[node name="Task3" parent="Environment/Task" instance=ExtResource("7_2val7")]
+[node name="Task3" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(592.5586, 60.728195)
 status = SubResource("Resource_ewj7t")
 
-[node name="Task5" parent="Environment/Task" instance=ExtResource("7_2val7")]
+[node name="Task5" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(593.14404, 350.55548)
 status = SubResource("Resource_ewj7t")
 
-[node name="Task4" parent="Environment/Task" instance=ExtResource("7_2val7")]
+[node name="Task4" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(323.80963, 210.03314)
 status = SubResource("Resource_ewj7t")
 

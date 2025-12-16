@@ -22,7 +22,7 @@ func play_music(path: String):
 	# Load and play
 	var stream = load(path)
 	if stream:
-		music_player.stream = stream
+		music_player.stream = stream 
 		music_player.play()
 
 #func play_sfx(path: String):

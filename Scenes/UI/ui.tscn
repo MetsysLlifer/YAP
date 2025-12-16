@@ -52,3 +52,9 @@ layout_mode = 2
 size_flags_horizontal = 2
 theme = ExtResource("2_de23q")
 toggle_mode = true
+
+[node name="QuestLabel" type="Label" parent="."]
+offset_left = 4.1210175
+offset_top = 15.029633
+offset_right = 173.32738
+offset_bottom = 139.87433

@@ -55,26 +55,26 @@ status = null
 
 [node name="Cooldown" type="Timer" parent="Environment/Chester"]
 
-[node name="Task" type="CanvasGroup" parent="Environment"]
+[node name="Tasks" type="CanvasGroup" parent="Environment"]
 y_sort_enabled = true
 
-[node name="Task" parent="Environment/Task" instance=ExtResource("7_ksn7p")]
+[node name="Task" parent="Environment/Tasks" instance=ExtResource("7_ksn7p")]
 position = Vector2(81.781876, 90.57113)
 status = SubResource("Resource_t6ghf")
 
-[node name="Task2" parent="Environment/Task" instance=ExtResource("7_ksn7p")]
+[node name="Task2" parent="Environment/Tasks" instance=ExtResource("7_ksn7p")]
 position = Vector2(211.36563, 219.2937)
 status = SubResource("Resource_t6ghf")
 
-[node name="Task3" parent="Environment/Task" instance=ExtResource("7_ksn7p")]
+[node name="Task3" parent="Environment/Tasks" instance=ExtResource("7_ksn7p")]
 position = Vector2(79.971756, 219.21815)
 status = SubResource("Resource_t6ghf")
 
-[node name="Task5" parent="Environment/Task" instance=ExtResource("7_ksn7p")]
+[node name="Task5" parent="Environment/Tasks" instance=ExtResource("7_ksn7p")]
 position = Vector2(369.32806, 156.062)
 status = SubResource("Resource_t6ghf")
 
-[node name="Task4" parent="Environment/Task" instance=ExtResource("7_ksn7p")]
+[node name="Task4" parent="Environment/Tasks" instance=ExtResource("7_ksn7p")]
 position = Vector2(209.11784, 91.258484)
 status = SubResource("Resource_t6ghf")
 

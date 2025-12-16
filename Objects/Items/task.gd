@@ -1,5 +1,8 @@
 extends Area2D
 
+# This sends the name (e.g., "networking") to the SceneSwitcher
+signal task_completed(task_type: String)
+
 @export var status: Task
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -57,7 +60,7 @@ func activate() -> void:
 	can_increment = false
 	
 	# 2. Increment the progress
-	progress_bar.value += 10
+	progress_bar.value += 100
 	
 	# 3. Check for completion
 	if progress_bar.value >= progress_bar.max_value:
@@ -69,6 +72,11 @@ func activate() -> void:
 # --- Completion Function ---
 
 func complete() -> void:
-	# Perform the action when the progress is complete
 	print("Progress Complete!")
-	queue_free() # Remove the object
+	
+	# 2. EMIT SIGNAL BEFORE DELETING
+	# We assume 'status' has a variable named 'item_name' (e.g. "networking")
+	if status and "item_name" in status:
+		emit_signal("task_completed", status.item_name)
+	
+	queue_free()
