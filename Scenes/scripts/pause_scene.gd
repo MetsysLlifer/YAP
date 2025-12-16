@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var menus: VBoxContainer = $menus
+@onready var menu: HBoxContainer = $menu
 @onready var options: Panel = $options
 @onready var h_slider: HSlider = $options/HSlider
 
@@ -22,7 +22,7 @@ func toggle_pause():
 	
 	# 5. Show or Hide this menu
 	visible = is_paused
-	menus.visible = true
+	menu.visible = true
 	options.visible = false
 	h_slider.value = db_to_linear(audioManager.music_player.volume_db)
 	
@@ -38,14 +38,20 @@ func _on_exit_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	menus.visible = false
+	menu.visible = false
 	options.visible = true # Replace with function body.
 
 
 func _on_close_pressed() -> void:
-	menus.visible = true
+	menu.visible = true
 	options.visible = false # Replace with function body.
 
 
 func _on_h_slider_value_changed(value: float) -> void:
 	audioManager.set_music_volume(value) # Replace with function body.
+
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	#get_tree().change_scene_to_file("res://Scenes/SceneSwitcher.tscn") # Replace with function body. # Replace with function body.
+	get_tree().reload_current_scene()
