@@ -216,9 +216,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -56.0
-offset_top = -14.5
+offset_top = -6.5
 offset_right = 56.0
-offset_bottom = 1.5
+offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_ce3w2")
@@ -227,6 +227,23 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_n45e2")
 max_value = 1.0
 step = 0.01
 value = 0.5
+
+[node name="music" type="Label" parent="options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -29.0
+offset_right = 12.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 11
+text = "music"
 
 [connection signal="pressed" from="menus/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="menus/Options" to="." method="_on_option_pressed"]
