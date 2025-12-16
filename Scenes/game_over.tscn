@@ -1,0 +1,132 @@
+[gd_scene load_steps=7 format=3 uid="uid://bet2e5pca8xor"]
+
+[ext_resource type="Script" uid="uid://cbdggbwfwbk0" path="res://Scenes/scripts/game_over.gd" id="1_ek8ke"]
+[ext_resource type="FontFile" uid="uid://wngk2hqp3kw4" path="res://assets/fonts/GrapeSoda.ttf" id="2_eoghk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odtm4"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 2.0
+shadow_color = Color(0.011087594, 0.011087573, 0.01108758, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1djl"]
+bg_color = Color(0.4817894, 0.48178953, 0.4817894, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.011087594, 0.011087573, 0.01108758, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 3.2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2868r"]
+bg_color = Color(0.601223, 0.601223, 0.60122293, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 1.0
+shadow_color = Color(0.011087594, 0.011087573, 0.01108758, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 3.2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4d0sl"]
+
+[node name="GameOverMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ek8ke")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="menus" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -22.0
+offset_right = 27.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Start Over" type="Button" parent="menus"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_eoghk")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odtm4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q1djl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2868r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4d0sl")
+text = "Start Over"
+
+[node name="Exit" type="Button" parent="menus"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_eoghk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_odtm4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q1djl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2868r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4d0sl")
+text = "Exit"
+
+[node name="Title" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.5
+offset_top = 26.0
+offset_right = 26.5
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("2_eoghk")
+theme_override_font_sizes/font_size = 26
+text = "GAME OVER!"
+
+[connection signal="pressed" from="menus/Start Over" to="." method="_on_start_over_pressed"]
+[connection signal="pressed" from="menus/Exit" to="." method="_on_exit_pressed"]

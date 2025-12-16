@@ -1,14 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b44j5ok564aj2"]
+[gd_scene load_steps=13 format=3 uid="uid://b44j5ok564aj2"]
 
-[ext_resource type="Script" uid="uid://cqq7t6udhj87h" path="res://characters/scripts/terror.gd" id="1_f2tlt"]
 [ext_resource type="Texture2D" uid="uid://be42htnykrbrm" path="res://assets/base/diamond.png" id="1_yu4wx"]
-[ext_resource type="Script" uid="uid://duan3gak87v12" path="res://util/Characters/enemy_data.gd" id="2_qtqyn"]
 [ext_resource type="Texture2D" uid="uid://d2wcsixyldqny" path="res://assets/base/Untitled design.png" id="3_8xo6e"]
 [ext_resource type="Texture2D" uid="uid://dbwt0b04rln6e" path="res://assets/base/GODWIN_MONSERATE.png" id="3_qtqyn"]
-
-[sub_resource type="Resource" id="Resource_nn1br"]
-script = ExtResource("2_qtqyn")
-metadata/_custom_type_script = "uid://duan3gak87v12"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtqyn"]
 height = 33.333336
@@ -361,8 +355,6 @@ height = 34.0
 
 [node name="Godwin" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_f2tlt")
-status = SubResource("Resource_nn1br")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

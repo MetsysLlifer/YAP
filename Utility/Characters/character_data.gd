@@ -20,12 +20,14 @@ signal died
 		var clamped_value = clampi(value, 0, 100)
 		# Only update if the value is actually different
 		if health != clamped_value:
+			print("Health Deducted")
 			health = clamped_value
 			# Shout to the world: "My health is now X!"
 			health_changed.emit(health)
 			
-			if health == 0:
-				died.emit()
+		if health <= 0:
+			print("Died")
+			died.emit()
 
 @export_range(0, 1000) var attack: int = 100
 @export_range(0, 1000) var dexterity: int

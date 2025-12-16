@@ -24,9 +24,6 @@ func _ready() -> void:
 			# Run it once to load any starting items
 			update_inventory_visuals()
 	#Update current player when accessing to another scene
-	
-	owner.player_changed.connect(updatePlayer)
-	player.status.health_changed.connect(updateHealth)
 	health_bar.value = player.status.health
 	label.text = str(1.0 + (1.0 - (health_bar.value / 100)) * 2.0) + " / 1.0"
 
