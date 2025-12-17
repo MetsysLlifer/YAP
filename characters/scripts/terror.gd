@@ -68,7 +68,7 @@ func get_arrival_intensity(target: Node2D) -> float:
 	
 	# Calculate intensity: 
 	# If distance is 200 (radius), intensity >= 1.
-	var intensity := distance / slow_down_radius - 1
+	var intensity := distance / slow_down_radius - status.avoidance_strength
 	
 	# Clamp ensures we never go above 1.0 (overspeeding) or below -1.0 (reversing)
 	return clampf(intensity, -1.0, 1.0)

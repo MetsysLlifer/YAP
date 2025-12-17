@@ -1,8 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://b44j5ok564aj2"]
+[gd_scene load_steps=16 format=3 uid="uid://b44j5ok564aj2"]
 
+[ext_resource type="Script" uid="uid://cmftvbclhauxj" path="res://characters/scripts/godwin.gd" id="1_j8k2l"]
 [ext_resource type="Texture2D" uid="uid://be42htnykrbrm" path="res://assets/base/diamond.png" id="1_yu4wx"]
+[ext_resource type="Script" uid="uid://bi40yp7wpjib3" path="res://Utility/Characters/free_loader.gd" id="2_qtqyn"]
 [ext_resource type="Texture2D" uid="uid://d2wcsixyldqny" path="res://assets/base/Untitled design.png" id="3_8xo6e"]
 [ext_resource type="Texture2D" uid="uid://dbwt0b04rln6e" path="res://assets/base/GODWIN_MONSERATE.png" id="3_qtqyn"]
+
+[sub_resource type="Resource" id="Resource_nn1br"]
+script = ExtResource("2_qtqyn")
+avoidance_strength = 0.3
+max_speed = 110.0
+metadata/_custom_type_script = "uid://bi40yp7wpjib3"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtqyn"]
 height = 33.333336
@@ -346,8 +354,8 @@ _data = {
 &"walk": SubResource("Animation_qtqyn")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qtqyn"]
-radius = 242.07437
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xo6e"]
+size = Vector2(1638, 1236)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nn1br"]
 radius = 16.0
@@ -355,6 +363,8 @@ height = 34.0
 
 [node name="Godwin" type="CharacterBody2D"]
 motion_mode = 1
+script = ExtResource("1_j8k2l")
+status = SubResource("Resource_nn1br")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -392,8 +402,7 @@ scale_amount_max = 0.05
 visible = false
 
 [node name="FieldCollision" type="CollisionShape2D" parent="Field"]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_qtqyn")
+shape = SubResource("RectangleShape2D_8xo6e")
 
 [node name="HitBox" type="Area2D" parent="."]
 

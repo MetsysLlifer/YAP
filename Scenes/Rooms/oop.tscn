@@ -51,7 +51,6 @@ position = Vector2(64, 384)
 
 [node name="Chester" parent="Environment" instance=ExtResource("6_hih0q")]
 position = Vector2(34.15866, 32.336216)
-status = null
 
 [node name="Cooldown" type="Timer" parent="Environment/Chester"]
 

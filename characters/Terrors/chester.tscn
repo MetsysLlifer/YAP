@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://4sfa6ckkindb"]
+[gd_scene load_steps=8 format=3 uid="uid://4sfa6ckkindb"]
 
+[ext_resource type="Script" uid="uid://cqq7t6udhj87h" path="res://characters/scripts/terror.gd" id="1_8r7md"]
+[ext_resource type="Script" uid="uid://bi40yp7wpjib3" path="res://Utility/Characters/free_loader.gd" id="2_tvjlj"]
 [ext_resource type="Texture2D" uid="uid://cs6417k0ql0vh" path="res://assets/base/CHESTER.png" id="3_tvjlj"]
+
+[sub_resource type="Resource" id="Resource_b3yrw"]
+script = ExtResource("2_tvjlj")
+max_speed = 125.0
+metadata/_custom_type_script = "uid://bi40yp7wpjib3"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvjlj"]
 height = 32.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tvjlj"]
-radius = 217.08293
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8r7md"]
+size = Vector2(1638, 1236)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3yrw"]
 radius = 16.0
@@ -14,6 +21,8 @@ height = 34.0
 
 [node name="Chester" type="CharacterBody2D"]
 motion_mode = 1
+script = ExtResource("1_8r7md")
+status = SubResource("Resource_b3yrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
@@ -25,11 +34,9 @@ shape = SubResource("CapsuleShape2D_tvjlj")
 
 [node name="Field" type="Area2D" parent="."]
 visible = false
-position = Vector2(2, 0)
 
 [node name="FieldCollision" type="CollisionShape2D" parent="Field"]
-position = Vector2(-4, 0)
-shape = SubResource("CircleShape2D_tvjlj")
+shape = SubResource("RectangleShape2D_8r7md")
 
 [node name="HitBox" type="Area2D" parent="."]
 
