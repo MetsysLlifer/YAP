@@ -9,7 +9,8 @@
 [sub_resource type="Resource" id="Resource_nn1br"]
 script = ExtResource("2_qtqyn")
 avoidance_strength = 0.3
-max_speed = 110.0
+slow_down_radius = 10
+max_speed = 150.0
 metadata/_custom_type_script = "uid://bi40yp7wpjib3"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtqyn"]

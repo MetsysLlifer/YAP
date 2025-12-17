@@ -45,6 +45,15 @@ func _input(event: InputEvent) -> void:
 			_on_slot_pressed(0)
 		elif event.keycode == KEY_2:
 			_on_slot_pressed(1)
+		
+		# --- NEW: Handle "E" to Heal & Deselect ---
+		elif event.keycode == KEY_E:
+			# 1. Trigger the logic on the player
+			if player and player.has_method("use_equipped_item"):
+				player.use_equipped_item()
+			
+			# 2. Update the UI to show nothing is selected
+			deselect_all()
 
 func _on_slot_pressed(index: int) -> void:
 	# LOGIC CHECK: Are we clicking the slot that is ALREADY active?

@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_b3yrw"]
 script = ExtResource("2_tvjlj")
-max_speed = 125.0
+max_speed = 250.0
 metadata/_custom_type_script = "uid://bi40yp7wpjib3"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvjlj"]

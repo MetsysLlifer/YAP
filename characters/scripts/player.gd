@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var item: Sprite2D = $Item
+@onready var effects: AnimationPlayer = $Effects/Effects
 
 @export var status : PlayerData
 var steering_factor := 10.0
@@ -14,6 +15,11 @@ var active_slot_index: int = -1
 func _ready() -> void:
 	if not status:
 		status = PlayerData.new()
+
+func _input(event: InputEvent) -> void:
+	# Check if the key pressed is "E"
+	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+		use_equipped_item()
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -45,14 +51,14 @@ func _physics_process(delta: float) -> void:
 		item.position.x = abs(item.position.x)
 
 func equip_item(index):
-	# Get the item data from the inventory
 	var item_resource = status.inventory[index]
-	# Check: Is it a real item? AND Does it have a texture?
+	
 	if item_resource != null and item_resource.texture != null:
 		item.texture = item_resource.texture
+		active_slot_index = index  # <--- CRITICAL FIX: Save the index!
 	else:
-		# If slot is empty (or item has no picture), show nothing
 		item.texture = null
+		active_slot_index = -1     # Safety: Reset if the slot was empty
 
 
 func unequip_item():
@@ -72,6 +78,7 @@ func use_equipped_item():
 		status.health += item_resource.healing_factor
 		print("Used item! Health is now: ", status.health)
 		# 4. Consume the item (Remove from data)
+		effects.play("heal")
 		status.remove_item(active_slot_index)
 		# 5. Clear the visual immediately
 		# (The UI will update automatically because of the signal in PlayerData)

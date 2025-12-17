@@ -157,7 +157,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Effects" type="CanvasGroup" parent="."]
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Effects"]
+[node name="Effects" type="AnimationPlayer" parent="Effects"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_vcag3")

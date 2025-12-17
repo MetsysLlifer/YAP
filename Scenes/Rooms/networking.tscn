@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cjkau7rsuc2x4"]
+[gd_scene load_steps=17 format=4 uid="uid://cjkau7rsuc2x4"]
 
 [ext_resource type="TileSet" uid="uid://byn51vmwi8h8d" path="res://Scenes/Tileset/Groundbase/floor.tres" id="1_cghg3"]
 [ext_resource type="TileSet" uid="uid://bl808hwuwn3vm" path="res://Scenes/Tileset/Groundbase/wall.tres" id="2_ql1kw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cochw5gqiw3wg" path="res://assets/base/network.png" id="9_1b1ly"]
 [ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="10_yryt0"]
 [ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="11_dck5j"]
+[ext_resource type="PackedScene" uid="uid://cqrgm1hg7odkn" path="res://Objects/Items/healing_item.tscn" id="12_dck5j"]
 [ext_resource type="PackedScene" uid="uid://dcneye5ju7kay" path="res://characters/Turrets/turret.tscn" id="14_dck5j"]
 [ext_resource type="Script" path="res://characters/scripts/turret_child.gd" id="14_yryt0"]
 
@@ -76,6 +77,12 @@ status = SubResource("Resource_ewj7t")
 [node name="Task4" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(323.80963, 210.03314)
 status = SubResource("Resource_ewj7t")
+
+[node name="HealingItem" parent="Environment" instance=ExtResource("12_dck5j")]
+position = Vector2(47.91487, 64.19674)
+
+[node name="HealingItem2" parent="Environment" instance=ExtResource("12_dck5j")]
+position = Vector2(188.91843, 307.22726)
 
 [node name="Portals" type="Node2D" parent="."]
 

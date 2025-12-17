@@ -61,14 +61,13 @@ func remove_object_reference(object: Node2D) -> void:
 # Returns a value between 0.0 (stopped) and 1.0 (full speed)
 func get_arrival_intensity(target: Node2D) -> float:
 	# The distance (in pixels) where the enemy starts hitting the brakes
-	var slow_down_radius := 50.0 
 	
 	# Calculate pure distance
 	var distance := global_position.distance_to(target.global_position)
 	
 	# Calculate intensity: 
 	# If distance is 200 (radius), intensity >= 1.
-	var intensity := distance / slow_down_radius - status.avoidance_strength
+	var intensity := distance / status.slow_down_radius - status.avoidance_strength
 	
 	# Clamp ensures we never go above 1.0 (overspeeding) or below -1.0 (reversing)
 	return clampf(intensity, -1.0, 1.0)

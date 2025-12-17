@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cey67fngsrjjp"]
+[gd_scene load_steps=16 format=4 uid="uid://cey67fngsrjjp"]
 
 [ext_resource type="TileSet" uid="uid://byn51vmwi8h8d" path="res://Scenes/Tileset/Groundbase/floor.tres" id="1_4ncre"]
 [ext_resource type="TileSet" uid="uid://bl808hwuwn3vm" path="res://Scenes/Tileset/Groundbase/wall.tres" id="2_ci8rb"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cochw5gqiw3wg" path="res://assets/base/network.png" id="9_ylru6"]
 [ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="10_6lcsi"]
 [ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="11_sk2ob"]
+[ext_resource type="PackedScene" uid="uid://cqrgm1hg7odkn" path="res://Objects/Items/healing_item.tscn" id="13_ylru6"]
 
 [sub_resource type="Resource" id="Resource_vt6ar"]
 script = ExtResource("8_s4wsd")
@@ -51,7 +52,6 @@ position = Vector2(576, 384)
 [node name="Pena" parent="Environment" instance=ExtResource("6_ci8rb")]
 position = Vector2(574.64545, 32.541824)
 script = ExtResource("7_s4wsd")
-status = null
 
 [node name="Cooldown" type="Timer" parent="Environment/Pena"]
 
@@ -77,6 +77,12 @@ status = SubResource("Resource_vt6ar")
 [node name="Task4" parent="Environment/Tasks" instance=ExtResource("7_uxp0v")]
 position = Vector2(303.78262, 123.50693)
 status = SubResource("Resource_vt6ar")
+
+[node name="HealingItem" parent="Environment" instance=ExtResource("13_ylru6")]
+position = Vector2(620.43945, 18.206337)
+
+[node name="HealingItem2" parent="Environment" instance=ExtResource("13_ylru6")]
+position = Vector2(16.666412, 14.819115)
 
 [node name="Portals" type="Node2D" parent="."]
 
