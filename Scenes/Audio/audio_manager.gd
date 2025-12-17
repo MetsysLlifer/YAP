@@ -4,6 +4,7 @@ extends Node
 @onready var music_player: AudioStreamPlayer = $musicPlayer
 var lobby_music = preload("res://Scenes/Audio/Kevin MacLeod - Itty Bitty 8 Bit  NO COPYRIGHT 8-bit Music.mp3")
 var boss_music = preload("res://Scenes/Audio/boss.mp3")
+var game_over_music = preload("res://Scenes/Audio/died.mp3")
 #@onready var sfx_player = $SFXPlayer
 
 # Path to your main menu music
@@ -19,10 +20,18 @@ func _ready():
 func play_music(type: String) -> void:
 	var stream_to_play = null
 	
-	if type == "boss":
-		stream_to_play = boss_music
-	else:
-		stream_to_play = lobby_music
+	match type:
+		"boss":
+			stream_to_play = boss_music
+		"game_over":  # <--- NEW CASE
+			stream_to_play = game_over_music
+		_:
+			# Default to lobby for everything else
+			stream_to_play = lobby_music
+	# Only switch tracks if it's actually different
+	if music_player.stream != stream_to_play:
+		music_player.stream = stream_to_play
+		music_player.play()
 	
 	# Only change if the song is actually different
 	if music_player.stream != stream_to_play:

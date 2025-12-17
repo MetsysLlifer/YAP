@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bet2e5pca8xor"]
+[gd_scene load_steps=7 format=3 uid="uid://ccufd1377utdn"]
 
 [ext_resource type="Script" uid="uid://cbdggbwfwbk0" path="res://Scenes/scripts/game_over.gd" id="1_ek8ke"]
 [ext_resource type="FontFile" uid="uid://wngk2hqp3kw4" path="res://assets/fonts/GrapeSoda.ttf" id="2_eoghk"]
