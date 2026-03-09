@@ -149,6 +149,7 @@ _data = {
 }
 
 [node name="Task" type="Area2D"]
+input_pickable = false
 script = ExtResource("1_hub68")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -165,8 +166,32 @@ offset_top = -17.087955
 offset_right = 10.0
 offset_bottom = -13.087955
 theme = SubResource("Theme_ye7pd")
+max_value = 200.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="SliderUI" type="HSlider" parent="."]
+visible = false
+offset_left = -9.0
+offset_top = 15.0
+offset_right = 73.0
+offset_bottom = 31.0
+
+[node name="ColorRect" type="ColorRect" parent="SliderUI"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 12.0
+color = Color(0.31764707, 0.67058825, 0.34117648, 1)
+
+[node name="SequenceUI" type="Label" parent="."]
+visible = false
+offset_left = -13.0
+offset_top = -28.0
+offset_right = 34.0
+offset_bottom = -5.0
+text = "UCKL"
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="11_dck5j"]
 [ext_resource type="PackedScene" uid="uid://cqrgm1hg7odkn" path="res://Objects/Items/healing_item.tscn" id="12_dck5j"]
 [ext_resource type="PackedScene" uid="uid://dcneye5ju7kay" path="res://characters/Turrets/turret.tscn" id="14_dck5j"]
-[ext_resource type="Script" path="res://characters/scripts/turret_child.gd" id="14_yryt0"]
+[ext_resource type="Script" uid="uid://dustvleqmuoga" path="res://characters/scripts/turret_child.gd" id="14_yryt0"]
 [ext_resource type="PackedScene" uid="uid://cp73cw4ahfpgw" path="res://Scenes/Animation/GodwinCutScene.tscn" id="17_km0v3"]
 
 [sub_resource type="Resource" id="Resource_ewj7t"]
@@ -126,18 +126,22 @@ status = SubResource("Resource_ewj7t")
 [node name="Task2" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(47.67932, 349.20346)
 status = SubResource("Resource_ewj7t")
+task_id = 2
 
 [node name="Task3" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(592.5586, 60.728195)
 status = SubResource("Resource_ewj7t")
+task_id = 3
 
 [node name="Task5" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(593.14404, 350.55548)
 status = SubResource("Resource_ewj7t")
+task_id = 4
 
 [node name="Task4" parent="Environment/Tasks" instance=ExtResource("7_2val7")]
 position = Vector2(323.80963, 210.03314)
 status = SubResource("Resource_ewj7t")
+task_id = 5
 
 [node name="HealingItem" parent="Environment" instance=ExtResource("12_dck5j")]
 position = Vector2(47.91487, 64.19674)

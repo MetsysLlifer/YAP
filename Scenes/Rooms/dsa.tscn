@@ -125,18 +125,22 @@ status = SubResource("Resource_vt6ar")
 [node name="Task2" parent="Environment/Tasks" instance=ExtResource("7_uxp0v")]
 position = Vector2(238.93286, 252.58243)
 status = SubResource("Resource_vt6ar")
+task_id = 5
 
 [node name="Task3" parent="Environment/Tasks" instance=ExtResource("7_uxp0v")]
 position = Vector2(530.9299, 123.51308)
 status = SubResource("Resource_vt6ar")
+task_id = 2
 
 [node name="Task5" parent="Environment/Tasks" instance=ExtResource("7_uxp0v")]
 position = Vector2(467.63385, 188.31044)
 status = SubResource("Resource_vt6ar")
+task_id = 3
 
 [node name="Task4" parent="Environment/Tasks" instance=ExtResource("7_uxp0v")]
 position = Vector2(303.78262, 123.50693)
 status = SubResource("Resource_vt6ar")
+task_id = 4
 
 [node name="HealingItem" parent="Environment" instance=ExtResource("13_ylru6")]
 position = Vector2(620.43945, 18.206337)
