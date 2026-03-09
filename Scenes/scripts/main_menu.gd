@@ -31,9 +31,6 @@ func _on_guide_pressed() -> void:
 	guide.visible = true
 
 
-func _on_exit_pressed() -> void:
-	get_tree().quit() # Replace with function body.
-
 
 func _on_options_close_pressed() -> void:
 	menus.visible = true

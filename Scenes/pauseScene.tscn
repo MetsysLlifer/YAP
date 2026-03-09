@@ -73,6 +73,21 @@ shadow_offset = Vector2(0, 3.2)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4d0sl"]
 
+[sub_resource type="Animation" id="Animation_f6cwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Healing:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ye80n")]
+}
+
 [sub_resource type="Animation" id="Animation_pnu1m"]
 resource_name = "heal"
 length = 0.7
@@ -88,21 +103,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("8_18qav"), ExtResource("7_ye80n"), ExtResource("9_ubbpq"), ExtResource("10_etnhu"), ExtResource("11_nr2ro"), ExtResource("7_ye80n")]
-}
-
-[sub_resource type="Animation" id="Animation_f6cwj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Healing:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_ye80n")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f6cwj"]
@@ -225,7 +225,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2868r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4d0sl")
 text = "Resume"
 
-[node name="Exit" type="Button" parent="menu/menus"]
+[node name="GuideButton" type="Button" parent="menu/menus"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -233,11 +233,12 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_dttsp")
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_odtm4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_q1djl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2868r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4d0sl")
-text = "Exit"
+text = "Guide"
 
 [node name="menus2" type="VBoxContainer" parent="menu"]
 layout_mode = 2
@@ -272,24 +273,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_q1djl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2868r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4d0sl")
 text = "Restart"
-
-[node name="GuideButton" type="Button" parent="."]
-texture_filter = 1
-offset_left = 137.77838
-offset_top = 142.24895
-offset_right = 179.77838
-offset_bottom = 160.24895
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_dttsp")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_odtm4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_q1djl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2868r")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4d0sl")
-text = "Guide"
 
 [node name="Guide" type="Panel" parent="."]
 visible = false
@@ -593,10 +576,9 @@ theme_override_font_sizes/font_size = 26
 text = "PAUSED!"
 
 [connection signal="pressed" from="menu/menus/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="menu/menus/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="menu/menus/GuideButton" to="." method="_on_guide_button_pressed"]
 [connection signal="pressed" from="menu/menus2/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="menu/menus2/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="GuideButton" to="." method="_on_guide_button_pressed"]
 [connection signal="pressed" from="Guide/GuideClose" to="." method="_on_guide_close_pressed"]
 [connection signal="pressed" from="options/close" to="." method="_on_close_pressed"]
 [connection signal="value_changed" from="options/HSlider" to="." method="_on_h_slider_value_changed"]

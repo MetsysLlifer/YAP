@@ -37,9 +37,6 @@ func _on_resume_pressed() -> void:
 	toggle_pause() # Unpause and hide
 
 
-func _on_exit_pressed() -> void:
-	get_tree().quit() # Close the game window
-
 
 func _on_options_pressed() -> void:
 	menu.visible = false

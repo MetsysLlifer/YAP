@@ -11,7 +11,6 @@
 
 [sub_resource type="Resource" id="Resource_6t23p"]
 script = ExtResource("2_tory2")
-health = 500
 metadata/_custom_type_script = "uid://cxh3ddfa0awl7"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tory2"]

@@ -89,6 +89,21 @@ thickness = 4
 color = Color(0.7254902, 0.54901963, 0.36862746, 1)
 thickness = 4
 
+[sub_resource type="Animation" id="Animation_f6cwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Healing:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_ne6ao")]
+}
+
 [sub_resource type="Animation" id="Animation_pnu1m"]
 resource_name = "heal"
 length = 0.7
@@ -104,21 +119,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("10_tt8ml"), ExtResource("9_ne6ao"), ExtResource("11_fmarx"), ExtResource("12_hkdq0"), ExtResource("13_xcoo4"), ExtResource("9_ne6ao")]
-}
-
-[sub_resource type="Animation" id="Animation_f6cwj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Healing:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("9_ne6ao")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f6cwj"]
@@ -214,10 +214,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -84.0
-offset_right = 26.0
-offset_bottom = -11.0
+offset_left = -26.5
+offset_top = -98.72
+offset_right = 27.5
+offset_bottom = -24.720001
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
@@ -267,20 +267,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Guide"
 
-[node name="Exit" type="Button" parent="menus"]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_fu7sn")
-theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Exit"
-
 [node name="Title" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -301,6 +287,7 @@ text = "A Day in a Life as a Computer Science Student"
 
 [node name="Options" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -380,6 +367,7 @@ text = "music"
 
 [node name="Guide" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -590,7 +578,6 @@ text = "X"
 [connection signal="pressed" from="menus/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="menus/Options" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="menus/Guide" to="." method="_on_guide_pressed"]
-[connection signal="pressed" from="menus/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Options/OptionsClose" to="." method="_on_options_close_pressed"]
 [connection signal="value_changed" from="Options/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Guide/GuideClose" to="." method="_on_guide_close_pressed"]

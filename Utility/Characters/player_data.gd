@@ -28,7 +28,7 @@ func remove_item(index: int) -> void:
 
 func reset_data() -> void:
 	# 1. Reset Health (Change 100.0 to your actual max health)
-	health = 75
+	health = 100
 	
 	# 2. Clear Inventory (Change size based on your slots, e.g., 2 slots)
 	inventory = [null, null] 
