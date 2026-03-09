@@ -74,4 +74,4 @@ func get_arrival_intensity(target: Node2D) -> float:
 
 func attack(body: Node) -> void:
 	if body.is_in_group("player"):
-		body.status.health -= 10
+		body.status.health -= status.attack

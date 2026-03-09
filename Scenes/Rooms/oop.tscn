@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://bef776ro7ck0q"]
+[gd_scene load_steps=19 format=4 uid="uid://bef776ro7ck0q"]
 
 [ext_resource type="TileSet" uid="uid://byn51vmwi8h8d" path="res://Scenes/Tileset/Groundbase/floor.tres" id="1_i0xqw"]
+[ext_resource type="Script" uid="uid://dlekcgb7biqt2" path="res://Scenes/Rooms/SpawnCutScene.gd" id="1_rojhf"]
 [ext_resource type="TileSet" uid="uid://bl808hwuwn3vm" path="res://Scenes/Tileset/Groundbase/wall.tres" id="2_mmiio"]
 [ext_resource type="TileSet" uid="uid://dln1s0mfo1msf" path="res://Scenes/Tileset/Environment/furnitures.tres" id="3_hih0q"]
 [ext_resource type="TileSet" uid="uid://ikul50otpb2g" path="res://Scenes/Tileset/Environment/props.tres" id="4_i50dk"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="10_rojhf"]
 [ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="11_fadnc"]
 [ext_resource type="PackedScene" uid="uid://cqrgm1hg7odkn" path="res://Objects/Items/healing_item.tscn" id="12_x2tff"]
+[ext_resource type="PackedScene" uid="uid://xvhf0e2cr1sj" path="res://Scenes/Animation/ChestreCutScene.tscn" id="14_77v5p"]
 
 [sub_resource type="Resource" id="Resource_t6ghf"]
 script = ExtResource("8_x2tff")
@@ -20,7 +22,65 @@ item_name = "oop"
 icon_type = "bug"
 metadata/_custom_type_script = "uid://db50oho3xc5ma"
 
+[sub_resource type="Animation" id="Animation_rojhf"]
+resource_name = "CutScene"
+length = 7.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Environment/Player")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"set_physics_process"
+}, {
+"args": [true],
+"method": &"set_physics_process"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("14_77v5p")],
+"method": &"spawn_cutscene"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Environment/Chester")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"set_physics_process"
+}, {
+"args": [true],
+"method": &"set_physics_process"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fadnc"]
+_data = {
+&"CutScene": SubResource("Animation_rojhf")
+}
+
 [node name="OOP" type="Node2D"]
+script = ExtResource("1_rojhf")
 
 [node name="GroundBase" type="Node2D" parent="."]
 
@@ -89,3 +149,9 @@ position = Vector2(164.22043, 71.26399)
 [node name="to_oop" parent="Portals" instance=ExtResource("5_o8jy6")]
 position = Vector2(64, 384)
 entry_tag = "from_oop"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fadnc")
+}
+autoplay = "CutScene"

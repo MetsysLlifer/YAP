@@ -6,8 +6,9 @@
 
 [sub_resource type="Resource" id="Resource_0r4k2"]
 script = ExtResource("2_arulk")
-max_speed = 200.0
+max_speed = 1131.373
 speed = 100.0
+attack = 10
 metadata/_custom_type_script = "uid://duan3gak87v12"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_arulk"]
@@ -34,7 +35,6 @@ position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_arulk")
 
 [node name="Field" type="Area2D" parent="."]
-visible = false
 
 [node name="FieldCollision" type="CollisionShape2D" parent="Field"]
 shape = SubResource("RectangleShape2D_arulk")

@@ -16,14 +16,19 @@ func _ready() -> void:
 	field.body_entered.connect(get_object_reference)
 	field.body_exited.connect(remove_object_reference)
 	hitbox.body_entered.connect(attack)
-	cooldown.timeout.connect(_on_cooldown_timeout)
+	
+	# REMOVED the cooldown.timeout.connect line here!
 
 func _physics_process(_delta: float) -> void:
 	if current_target != null:
 		track_target()
-	if cooldown.is_stopped():
+		
+		# Moved this INSIDE the current_target check. 
+		# This ensures the timer only runs and shoots if it actually sees the player.
+		if cooldown.is_stopped():
 			shoot()
 			cooldown.start()
+
 # Projectile Function
 func shoot():
 	if current_target == null: return
@@ -34,8 +39,7 @@ func shoot():
 	main.add_child.call_deferred(instance)
 	print("Shooting")
 	
-func _on_cooldown_timeout() -> void:
-	shoot()
+# REMOVED the _on_cooldown_timeout() function entirely!
 	
 func attack(body: Node) -> void:
 	if body.is_in_group("player"):

@@ -7,6 +7,7 @@ func _ready() -> void:
 func show_popup() -> void:
 	visible = true
 	# Optional: Play a sound or animation here
+	get_tree().paused = true
 	print("Victory Popup Shown")
 
 func _on_continue_pressed() -> void:
