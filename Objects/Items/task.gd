@@ -10,7 +10,9 @@ signal task_completed(task_type: String)
 @onready var timer: Timer = %Timer
 @onready var slider: HSlider = get_node_or_null("SliderUI")
 @onready var bug_ui: Control = get_node_or_null("BugUI")
-@onready var sequence_label: Label = get_node_or_null("SequenceUI")
+@onready var sequence_label: Label = $SequenceUI
+@onready var task_action: AnimationPlayer = %TaskAction
+@onready var impact: Sprite2D = $Impact
 
 var is_player_in_area: bool = false
 var sequence_progress: int = 0
@@ -19,6 +21,7 @@ var target_sequence: Array = ["U", "C", "K", "L"]
 var last_key: String = "" 
 
 func _ready() -> void:
+	impact.visible = false
 	connect("body_entered", _on_body_entered)
 	connect("body_exited", _on_body_exited)
 	if status:
@@ -31,18 +34,20 @@ func _process(delta: float) -> void:
 	match task_id:
 		1: # THE LOADING BAR
 			sequence_label.visible = true
-			sequence_label.text = "MASH SPACE TO COMPILE!"
+			sequence_label.text = "SMASH SPACE TO COMPILE!"
 			if Input.is_action_just_pressed("ui_accept"):
 				progress_bar.value += 10
+				task_action.play("success")
 		2: # THE FOCUS TEST
 			if slider:
 				slider.visible = true
 				sequence_label.visible = true
-				sequence_label.text = "PRESS E IN THE GREEN!"
+				sequence_label.text = "PRESS SPACE IN THE GREEN!"
 				slider.value = pingpong(Time.get_ticks_msec() * 0.1, 100)
 				if Input.is_action_just_pressed("interact"): 
 					if slider.value > 40 and slider.value < 60:
 						progress_bar.value += 35
+						task_action.play("success")
 					else:
 						progress_bar.value -= 5
 		3: # THE SYNTAX BUFFER
@@ -53,6 +58,7 @@ func _process(delta: float) -> void:
 				if Input.is_action_just_pressed("move_left"):
 					if last_key != "left":
 						slider.value += 1
+						task_action.play("success")
 						last_key = "left"
 						sequence_label.text = "BUFFER: [ > ]"
 					else:
@@ -61,6 +67,7 @@ func _process(delta: float) -> void:
 				if Input.is_action_just_pressed("move_right"):
 					if last_key != "right":
 						slider.value += 1
+						task_action.play("success")
 						last_key = "right"
 						sequence_label.text = "BUFFER: [ < ]"
 					else:
@@ -84,6 +91,7 @@ func _process(delta: float) -> void:
 			sequence_label.visible = true
 			sequence_label.text = "UPLOADING... STAY CLOSE!"
 			progress_bar.value += 15 * delta
+			task_action.play("success")
 
 	if progress_bar.value >= progress_bar.max_value:
 		complete()
@@ -100,6 +108,7 @@ func _handle_sequence_input():
 		var current_target = str(target_sequence[sequence_progress])
 		if key == current_target:
 			sequence_progress += 1
+			task_action.play("success")
 			if sequence_progress >= target_sequence.size():
 				progress_bar.value += 50
 				sequence_progress = 0 

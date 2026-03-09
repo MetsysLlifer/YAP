@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkfenph3aywwn"]
+[gd_scene load_steps=17 format=3 uid="uid://bkfenph3aywwn"]
 
 [ext_resource type="Script" uid="uid://cw1mscvymac6c" path="res://characters/scripts/player.gd" id="1_3eadt"]
 [ext_resource type="Script" uid="uid://cxh3ddfa0awl7" path="res://Utility/Characters/player_data.gd" id="2_tory2"]
@@ -55,8 +55,6 @@ _data = {
 &"RESET": SubResource("Animation_x0jl3"),
 &"walk": SubResource("Animation_tory2")
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0jl3"]
 
 [sub_resource type="Animation" id="Animation_eus45"]
 length = 0.001
@@ -131,7 +129,8 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_tory2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-position = Vector2(0, 7.19)
+position = Vector2(0, 6.09)
+scale = Vector2(1.1, 1.1)
 shape = SubResource("CapsuleShape2D_tory2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -141,15 +140,6 @@ position_smoothing_speed = 10.0
 libraries = {
 &"": SubResource("AnimationLibrary_x0jl3")
 }
-
-[node name="HitBox" type="Area2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-1, -4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(1, 4)
-shape = SubResource("CapsuleShape2D_x0jl3")
-debug_color = Color(0.7799543, 0, 0.19641519, 0.41960785)
 
 [node name="Item" type="Sprite2D" parent="."]
 texture_filter = 1

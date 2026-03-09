@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="10_6lcsi"]
 [ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="11_sk2ob"]
 [ext_resource type="PackedScene" uid="uid://cqrgm1hg7odkn" path="res://Objects/Items/healing_item.tscn" id="13_ylru6"]
-[ext_resource type="PackedScene" uid="uid://bf6xrd3vavtjx" path="res://Scenes/Animation/PenaCutScene.tscn" id="16_sk2ob"]
+[ext_resource type="PackedScene" uid="uid://bf6xrd3vavtjx" path="res://Scenes/Animation/pena_cut_scene.tscn" id="16_sk2ob"]
 
 [sub_resource type="Resource" id="Resource_vt6ar"]
 script = ExtResource("8_s4wsd")

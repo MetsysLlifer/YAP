@@ -1,9 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://clj047th5hvb7"]
+[gd_scene load_steps=20 format=3 uid="uid://clj047th5hvb7"]
 
 [ext_resource type="Script" uid="uid://camctttuhjl4a" path="res://Objects/Items/task.gd" id="1_hub68"]
 [ext_resource type="PackedScene" uid="uid://bu5wqaxo3k31t" path="res://Objects/Items/waypoint_marker.tscn" id="2_hub68"]
+[ext_resource type="FontFile" uid="uid://wngk2hqp3kw4" path="res://assets/fonts/GrapeSoda.ttf" id="2_lacpi"]
+[ext_resource type="Texture2D" uid="uid://d3b3tdq24pdue" path="res://assets/+40FXPack_NYKNCK/Impact/I101/I101.png" id="4_40ajg"]
+[ext_resource type="Texture2D" uid="uid://db2i6w24sq5ok" path="res://assets/+40FXPack_NYKNCK/Impact/I101/I102.png" id="5_futn2"]
+[ext_resource type="Texture2D" uid="uid://bc57li35rbheg" path="res://assets/+40FXPack_NYKNCK/Impact/I101/I103.png" id="6_30bjb"]
+[ext_resource type="Texture2D" uid="uid://ttof1xioff3o" path="res://assets/+40FXPack_NYKNCK/Impact/I101/I104.png" id="7_dc3wk"]
+[ext_resource type="Texture2D" uid="uid://cdntjl41hp06o" path="res://assets/+40FXPack_NYKNCK/Impact/I101/I105.png" id="8_qebqy"]
+[ext_resource type="Texture2D" uid="uid://bxvtvb0l4o0s0" path="res://assets/+40FXPack_NYKNCK/Impact/I101/I106.png" id="9_1dmgf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gw07d"]
+radius = 23.62264
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gw07d"]
 
@@ -148,6 +156,163 @@ _data = {
 &"highlight": SubResource("Animation_b40am")
 }
 
+[sub_resource type="Animation" id="Animation_rx3m0"]
+resource_name = "success"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Impact:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Impact:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Impact:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Impact:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Impact:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_40ajg"), ExtResource("5_futn2"), ExtResource("6_30bjb"), ExtResource("7_dc3wk"), ExtResource("8_qebqy"), ExtResource("9_1dmgf")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Impact:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wqfye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Impact:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Impact:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Impact:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Impact:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Impact:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_40ajg")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Impact:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dc4l6"]
+_data = {
+&"RESET": SubResource("Animation_wqfye"),
+&"success": SubResource("Animation_rx3m0")
+}
+
 [node name="Task" type="Area2D"]
 input_pickable = false
 script = ExtResource("1_hub68")
@@ -186,17 +351,24 @@ offset_bottom = 12.0
 color = Color(0.31764707, 0.67058825, 0.34117648, 1)
 
 [node name="SequenceUI" type="Label" parent="."]
-visible = false
-offset_left = -13.0
-offset_top = -28.0
-offset_right = 34.0
-offset_bottom = -5.0
+unique_name_in_owner = true
+offset_left = -107.94407
+offset_top = -49.19395
+offset_right = 108.51827
+offset_bottom = -26.19395
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9137255)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_lacpi")
+theme_override_font_sizes/font_size = 20
 text = "UCKL"
+horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Higlight" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_5a8ol")
@@ -205,3 +377,13 @@ autoplay = "highlight"
 
 [node name="WaypointMarker" parent="." instance=ExtResource("2_hub68")]
 position = Vector2(0, -17.19)
+
+[node name="TaskAction" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_dc4l6")
+}
+
+[node name="Impact" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_40ajg")

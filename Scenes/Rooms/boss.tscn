@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://djfrc8ngu281b"]
+[gd_scene load_steps=22 format=4 uid="uid://djfrc8ngu281b"]
 
 [ext_resource type="TileSet" uid="uid://byn51vmwi8h8d" path="res://Scenes/Tileset/Groundbase/floor.tres" id="1_0eqby"]
+[ext_resource type="Script" uid="uid://dlekcgb7biqt2" path="res://Scenes/Rooms/SpawnCutScene.gd" id="1_bdwrq"]
 [ext_resource type="TileSet" uid="uid://bl808hwuwn3vm" path="res://Scenes/Tileset/Groundbase/wall.tres" id="2_isovh"]
 [ext_resource type="TileSet" uid="uid://dln1s0mfo1msf" path="res://Scenes/Tileset/Environment/furnitures.tres" id="3_ugs2i"]
 [ext_resource type="TileSet" uid="uid://ikul50otpb2g" path="res://Scenes/Tileset/Environment/props.tres" id="4_bdwrq"]
@@ -34,6 +35,7 @@ item_name = "dsa"
 metadata/_custom_type_script = "uid://db50oho3xc5ma"
 
 [node name="Boss" type="Node2D"]
+script = ExtResource("1_bdwrq")
 
 [node name="GroundBase" type="Node2D" parent="."]
 
@@ -181,3 +183,5 @@ position = Vector2(401.34262, 323.4111)
 script = ExtResource("15_vcshg")
 
 [node name="Cooldown" type="Timer" parent="Turrets/turret2"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

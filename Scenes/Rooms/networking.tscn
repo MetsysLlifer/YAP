@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cjkau7rsuc2x4"]
+[gd_scene load_steps=21 format=4 uid="uid://c3wtci25e3om3"]
 
 [ext_resource type="TileSet" uid="uid://byn51vmwi8h8d" path="res://Scenes/Tileset/Groundbase/floor.tres" id="1_cghg3"]
 [ext_resource type="Script" uid="uid://dlekcgb7biqt2" path="res://Scenes/Rooms/SpawnCutScene.gd" id="1_km0v3"]
@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="11_dck5j"]
 [ext_resource type="PackedScene" uid="uid://cqrgm1hg7odkn" path="res://Objects/Items/healing_item.tscn" id="12_dck5j"]
 [ext_resource type="PackedScene" uid="uid://dcneye5ju7kay" path="res://characters/Turrets/turret.tscn" id="14_dck5j"]
-[ext_resource type="Script" uid="uid://dustvleqmuoga" path="res://characters/scripts/turret_child.gd" id="14_yryt0"]
-[ext_resource type="PackedScene" uid="uid://cp73cw4ahfpgw" path="res://Scenes/Animation/GodwinCutScene.tscn" id="17_km0v3"]
+[ext_resource type="Script" path="res://characters/scripts/turret_child.gd" id="14_yryt0"]
+[ext_resource type="PackedScene" uid="uid://cp73cw4ahfpgw" path="res://Scenes/Animation/godwin_cut_scene.tscn" id="17_km0v3"]
 
 [sub_resource type="Resource" id="Resource_ewj7t"]
 script = ExtResource("8_4d5sj")
