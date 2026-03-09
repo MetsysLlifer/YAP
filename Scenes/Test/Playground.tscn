@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://qwe311yt1jt3"]
+[gd_scene load_steps=16 format=4 uid="uid://qwe311yt1jt3"]
 
 [ext_resource type="PackedScene" uid="uid://bkfenph3aywwn" path="res://characters/player.tscn" id="1_a4k3g"]
 [ext_resource type="TileSet" uid="uid://byn51vmwi8h8d" path="res://Scenes/Tileset/Groundbase/floor.tres" id="1_pv15m"]
@@ -9,6 +9,17 @@
 [ext_resource type="TileSet" uid="uid://ikul50otpb2g" path="res://Scenes/Tileset/Environment/props.tres" id="4_3ubu8"]
 [ext_resource type="PackedScene" uid="uid://4sfa6ckkindb" path="res://characters/Terrors/chester.tscn" id="4_k2wcb"]
 [ext_resource type="PackedScene" uid="uid://buvyemd7p3co" path="res://Objects/Portal.tscn" id="8_fikvc"]
+[ext_resource type="PackedScene" uid="uid://clj047th5hvb7" path="res://Objects/Items/task.tscn" id="9_846r5"]
+[ext_resource type="Script" uid="uid://db50oho3xc5ma" path="res://Utility/Task/task_data.gd" id="10_tc2nr"]
+[ext_resource type="Texture2D" uid="uid://cochw5gqiw3wg" path="res://assets/base/network.png" id="11_c2kc6"]
+[ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="12_qgbst"]
+[ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="13_0wp3e"]
+
+[sub_resource type="Resource" id="Resource_1rbav"]
+script = ExtResource("10_tc2nr")
+item_name = "oop"
+icon_type = "bug"
+metadata/_custom_type_script = "uid://db50oho3xc5ma"
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -54,8 +65,17 @@ position = Vector2(345, 4)
 [node name="Godwin" parent="Environment" instance=ExtResource("3_u6rxl")]
 position = Vector2(42, 38)
 
+[node name="Cooldown" type="Timer" parent="Environment/Godwin"]
+one_shot = true
+
 [node name="Chester" parent="Environment" instance=ExtResource("4_k2wcb")]
 position = Vector2(168, 213)
+
+[node name="Tasks" type="CanvasGroup" parent="Environment"]
+
+[node name="Task" parent="Environment/Tasks" instance=ExtResource("9_846r5")]
+position = Vector2(180.91391, -28.249184)
+status = SubResource("Resource_1rbav")
 
 [node name="Portals" type="Node2D" parent="."]
 

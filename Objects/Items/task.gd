@@ -60,7 +60,7 @@ func activate() -> void:
 	can_increment = false
 	
 	# 2. Increment the progress
-	progress_bar.value += 100
+	progress_bar.value += 10
 	
 	# 3. Check for completion
 	if progress_bar.value >= progress_bar.max_value:

@@ -1,0 +1,15 @@
+.DS_Store
+assets/.DS_Store
+assets/2dClassroomAssetPackByStyloo/.DS_Store
+assets/2dClassroomAssetPackByStyloo/Classroom/.DS_Store
+MacOS.zip
+MacOS/Game.dmg
+Scenes/SceneSwitcher.tscn1960354439.tmp
+Scenes/SceneSwitcher.tscn1972358556.tmp
+Scenes/SceneSwitcher.tscn1988299865.tmp
+Scenes/SceneSwitcher.tscn2035462161.tmp
+Scenes/SceneSwitcher.tscn2050681617.tmp
+Windows.zip
+Windows/Game.console.exe
+Windows/Game.exe
+Windows/Game.pck

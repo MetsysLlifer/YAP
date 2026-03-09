@@ -14,7 +14,8 @@ max_speed = 150.0
 metadata/_custom_type_script = "uid://bi40yp7wpjib3"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtqyn"]
-height = 33.333336
+radius = 5.956192
+height = 12.156483
 
 [sub_resource type="Animation" id="Animation_8xo6e"]
 length = 0.001
@@ -372,9 +373,9 @@ texture_filter = 1
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_qtqyn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-scale = Vector2(0.9, 0.9)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2(0, 7)
+scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_qtqyn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

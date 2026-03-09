@@ -39,12 +39,10 @@ enabled=PackedStringArray()
 [file_customization]
 
 folder_colors={
-"res://MacOS/": "pink",
 "res://Objects/": "green",
 "res://Resources/": "yellow",
 "res://Scenes/": "purple",
 "res://Utility/": "gray",
-"res://Windows/": "pink",
 "res://assets/": "red",
 "res://characters/": "blue"
 }

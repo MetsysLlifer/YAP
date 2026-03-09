@@ -11,7 +11,8 @@ attack = 10
 metadata/_custom_type_script = "uid://bi40yp7wpjib3"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvjlj"]
-height = 32.0
+radius = 5.956192
+height = 12.156483
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8r7md"]
 size = Vector2(1638, 1236)
@@ -29,8 +30,9 @@ status = SubResource("Resource_b3yrw")
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_tvjlj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2(0, 7)
+scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_tvjlj")
 
 [node name="Field" type="Area2D" parent="."]

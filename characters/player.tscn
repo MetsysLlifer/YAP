@@ -15,8 +15,8 @@ health = 75
 metadata/_custom_type_script = "uid://cxh3ddfa0awl7"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tory2"]
-radius = 8.0
-height = 26.0
+radius = 5.956192
+height = 12.156483
 
 [sub_resource type="Animation" id="Animation_x0jl3"]
 length = 0.001
@@ -131,6 +131,7 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_tory2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2(0, 7.19)
 shape = SubResource("CapsuleShape2D_tory2")
 
 [node name="Camera2D" type="Camera2D" parent="."]

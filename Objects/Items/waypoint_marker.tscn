@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5wqaxo3k31t"]
+
+[ext_resource type="Script" uid="uid://bdwyj2nqyfe6k" path="res://Objects/Items/waypoint_marker.gd" id="1_0o22l"]
+[ext_resource type="Texture2D" uid="uid://cms7kyfbb3ixd" path="res://assets/base/art_atlas.png" id="1_5e3u4"]
+
+[node name="WaypointMarker" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_5e3u4")
+hframes = 5
+script = ExtResource("1_0o22l")

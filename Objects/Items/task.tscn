@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://clj047th5hvb7"]
+[gd_scene load_steps=10 format=3 uid="uid://clj047th5hvb7"]
 
 [ext_resource type="Script" uid="uid://camctttuhjl4a" path="res://Objects/Items/task.gd" id="1_hub68"]
+[ext_resource type="PackedScene" uid="uid://bu5wqaxo3k31t" path="res://Objects/Items/waypoint_marker.tscn" id="2_hub68"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gw07d"]
 
@@ -176,3 +177,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_5a8ol")
 }
 autoplay = "highlight"
+
+[node name="WaypointMarker" parent="." instance=ExtResource("2_hub68")]
+position = Vector2(0, -17.19)
