@@ -3,10 +3,15 @@ extends CanvasLayer
 @onready var menu: HBoxContainer = $menu
 @onready var options: Panel = $options
 @onready var h_slider: HSlider = $options/HSlider
+@onready var guide_button: Button = $GuideButton
+@onready var guide: Panel = $Guide
+@onready var guide_close: Button = $Guide/GuideClose
 
 func _ready():
 	# 1. Hide the menu as soon as the game loads
 	visible = false 
+	guide.visible = false
+	options.visible = false
 
 func _input(event):
 	# 2. Listen for the "ui_cancel" key (Escape Key)
@@ -69,3 +74,13 @@ func _on_restart_pressed() -> void:
 	# 4. Reload the Main Scene
 	# This wipes the SceneSwitcher memory (task progress, etc.)
 	get_tree().change_scene_to_file("res://Scenes/SceneSwitcher.tscn")
+
+
+func _on_guide_button_pressed() -> void:
+	menu.visible = false
+	guide.visible = true
+
+
+func _on_guide_close_pressed() -> void:
+	guide.visible = false
+	menu.visible = true

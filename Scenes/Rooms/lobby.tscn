@@ -37,10 +37,6 @@ position = Vector2(140.86987, 159.04276)
 
 [node name="Portals" type="Node2D" parent="."]
 
-[node name="from_playground" parent="Portals" instance=ExtResource("4_5g40f")]
-position = Vector2(11.819504, 118.68762)
-entry_tag = "to_playground"
-
 [node name="from_dsa" parent="Portals" instance=ExtResource("4_5g40f")]
 position = Vector2(1440, 0)
 entry_tag = "to_dsa"

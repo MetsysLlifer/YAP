@@ -1,8 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://bw6xj4r5iijpi"]
+[gd_scene load_steps=37 format=3 uid="uid://bw6xj4r5iijpi"]
 
 [ext_resource type="Script" uid="uid://kklhfvg14ddf" path="res://Scenes/scripts/pause_scene.gd" id="1_mnpdu"]
 [ext_resource type="FontFile" uid="uid://wngk2hqp3kw4" path="res://assets/fonts/GrapeSoda.ttf" id="2_dttsp"]
+[ext_resource type="Script" uid="uid://b4yyg5oltshad" path="res://Scenes/guide.gd" id="3_0hfxr"]
 [ext_resource type="Texture2D" uid="uid://bi5gp4tq5y5op" path="res://assets/exit_button_small.png" id="3_dttsp"]
+[ext_resource type="Texture2D" uid="uid://hqqeu4f8wi8k" path="res://assets/base/FEMALE_PLAYER.png" id="4_aq1bo"]
+[ext_resource type="Texture2D" uid="uid://bwgskbjpstmqr" path="res://assets/base/handnotebook.png" id="5_73xsa"]
+[ext_resource type="Texture2D" uid="uid://cms7kyfbb3ixd" path="res://assets/base/art_atlas.png" id="6_qcbob"]
+[ext_resource type="Texture2D" uid="uid://uc6r4dnrut1d" path="res://assets/+40FXPack_NYKNCK/Impact/I111/I112.png" id="7_ye80n"]
+[ext_resource type="Texture2D" uid="uid://bbmx8ed0j7vlc" path="res://assets/+40FXPack_NYKNCK/Impact/I111/I111.png" id="8_18qav"]
+[ext_resource type="Texture2D" uid="uid://dyv0vi1130i54" path="res://assets/+40FXPack_NYKNCK/Impact/I111/I113.png" id="9_ubbpq"]
+[ext_resource type="Texture2D" uid="uid://cev2thvwq2lx0" path="res://assets/+40FXPack_NYKNCK/Impact/I111/I114.png" id="10_etnhu"]
+[ext_resource type="Texture2D" uid="uid://dwdw8ey1yw0of" path="res://assets/+40FXPack_NYKNCK/Impact/I111/I115.png" id="11_nr2ro"]
+[ext_resource type="Texture2D" uid="uid://cs6417k0ql0vh" path="res://assets/base/CHESTER.png" id="12_j8ris"]
+[ext_resource type="Texture2D" uid="uid://bhw1tncxm0isq" path="res://assets/base/PENA.png" id="13_iiyj2"]
+[ext_resource type="Texture2D" uid="uid://dbwt0b04rln6e" path="res://assets/base/GODWIN_MONSERATE.png" id="14_jf3yr"]
+[ext_resource type="TileSet" uid="uid://ikul50otpb2g" path="res://Scenes/Tileset/Environment/props.tres" id="15_g2hux"]
+[ext_resource type="PackedScene" uid="uid://clj047th5hvb7" path="res://Objects/Items/task.tscn" id="16_8a2jw"]
+[ext_resource type="Script" uid="uid://db50oho3xc5ma" path="res://Utility/Task/task_data.gd" id="17_oecdb"]
+[ext_resource type="Texture2D" uid="uid://cochw5gqiw3wg" path="res://assets/base/network.png" id="18_m02vo"]
+[ext_resource type="Texture2D" uid="uid://bhlk0sq0nscjn" path="res://assets/base/notebook.png" id="19_icf5d"]
+[ext_resource type="Texture2D" uid="uid://ckxubvvd66320" path="res://assets/base/bug.png" id="20_u0b21"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odtm4"]
 content_margin_left = 3.0
@@ -54,6 +72,101 @@ shadow_size = 2
 shadow_offset = Vector2(0, 3.2)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4d0sl"]
+
+[sub_resource type="Animation" id="Animation_pnu1m"]
+resource_name = "heal"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Healing:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_18qav"), ExtResource("7_ye80n"), ExtResource("9_ubbpq"), ExtResource("10_etnhu"), ExtResource("11_nr2ro"), ExtResource("7_ye80n")]
+}
+
+[sub_resource type="Animation" id="Animation_f6cwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Healing:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ye80n")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6cwj"]
+_data = {
+&"RESET": SubResource("Animation_f6cwj"),
+&"heal": SubResource("Animation_pnu1m")
+}
+
+[sub_resource type="Resource" id="Resource_q55rd"]
+script = ExtResource("17_oecdb")
+item_name = "oop"
+icon_type = "bug"
+metadata/_custom_type_script = "uid://db50oho3xc5ma"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_accjd"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 2.0
+shadow_color = Color(0.011087594, 0.011087573, 0.01108758, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3j6fc"]
+bg_color = Color(0.4817894, 0.48178953, 0.4817894, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.011087594, 0.011087573, 0.01108758, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 3.2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wiex"]
+bg_color = Color(0.601223, 0.601223, 0.60122293, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 1.0
+shadow_color = Color(0.011087594, 0.011087573, 0.01108758, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 3.2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl34o"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_odtm4"]
 
@@ -160,7 +273,234 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2868r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4d0sl")
 text = "Restart"
 
+[node name="GuideButton" type="Button" parent="."]
+texture_filter = 1
+offset_left = 137.77838
+offset_top = 142.24895
+offset_right = 179.77838
+offset_bottom = 160.24895
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dttsp")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_odtm4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q1djl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2868r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4d0sl")
+text = "Guide"
+
+[node name="Guide" type="Panel" parent="."]
+visible = false
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_0hfxr")
+
+[node name="BG" type="ColorRect" parent="Guide"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.729126
+offset_top = 18.410126
+offset_right = -32.729126
+offset_bottom = -18.410126
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Control" type="Control" parent="Guide/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Heal" type="CanvasGroup" parent="Guide/BG/Control"]
+visible = false
+position = Vector2(10.844269, 7.2720566)
+
+[node name="Player" type="Sprite2D" parent="Guide/BG/Control/Heal"]
+position = Vector2(86.78462, 46.183586)
+scale = Vector2(0.11811451, 0.11811451)
+texture = ExtResource("4_aq1bo")
+
+[node name="Handnotebook" type="Sprite2D" parent="Guide/BG/Control/Heal"]
+texture_filter = 1
+position = Vector2(94.76187, 47.30144)
+scale = Vector2(0.3257656, 0.3257656)
+texture = ExtResource("5_73xsa")
+
+[node name="Arrow" type="Sprite2D" parent="Guide/BG/Control/Heal"]
+texture_filter = 1
+position = Vector2(111.62833, 46.73528)
+rotation = -1.5707964
+texture = ExtResource("6_qcbob")
+hframes = 5
+
+[node name="Player2" type="Sprite2D" parent="Guide/BG/Control/Heal"]
+position = Vector2(133.64806, 46.183586)
+scale = Vector2(0.11811451, 0.11811451)
+texture = ExtResource("4_aq1bo")
+
+[node name="Healing" type="Sprite2D" parent="Guide/BG/Control/Heal"]
+modulate = Color(1, 1, 1, 0.627451)
+position = Vector2(133.93404, 38.366013)
+scale = Vector2(0.49481726, 0.49481726)
+texture = ExtResource("7_ye80n")
+
+[node name="HealDsc" type="Label" parent="Guide/BG/Control/Heal"]
+texture_filter = 1
+offset_left = 24.514473
+offset_top = 67.96576
+offset_right = 206.51447
+offset_bottom = 83.96576
+theme_override_fonts/font = ExtResource("2_dttsp")
+text = "Press E while holding a book"
+
+[node name="Heal?" type="Label" parent="Guide/BG/Control/Heal"]
+texture_filter = 1
+offset_left = 94.66478
+offset_top = 10.181126
+offset_right = 129.66478
+offset_bottom = 26.181126
+theme_override_fonts/font = ExtResource("2_dttsp")
+text = "Heal?"
+
+[node name="heal" type="AnimationPlayer" parent="Guide/BG/Control/Heal"]
+libraries = {
+&"": SubResource("AnimationLibrary_f6cwj")
+}
+autoplay = "heal"
+
+[node name="Enemy" type="CanvasGroup" parent="Guide/BG/Control"]
+visible = false
+position = Vector2(10.844269, 7.2720566)
+
+[node name="Chester" type="Sprite2D" parent="Guide/BG/Control/Enemy"]
+position = Vector2(89.005356, 36.264336)
+scale = Vector2(0.11811454, 0.11811454)
+texture = ExtResource("12_j8ris")
+
+[node name="Pena" type="Sprite2D" parent="Guide/BG/Control/Enemy"]
+position = Vector2(111.24308, 33.37866)
+scale = Vector2(0.11811451, 0.11811451)
+texture = ExtResource("13_iiyj2")
+
+[node name="Godwin" type="Sprite2D" parent="Guide/BG/Control/Enemy"]
+position = Vector2(132.84654, 35.408672)
+scale = Vector2(0.11811451, 0.11811451)
+texture = ExtResource("14_jf3yr")
+
+[node name="HealDsc" type="Label" parent="Guide/BG/Control/Enemy"]
+texture_filter = 1
+offset_left = 0.34181976
+offset_top = 55.332367
+offset_right = 232.71628
+offset_bottom = 90.33237
+theme_override_fonts/font = ExtResource("2_dttsp")
+text = "Avoid your teachers as much as possible"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Heal?" type="Label" parent="Guide/BG/Control/Enemy"]
+texture_filter = 1
+offset_left = 55.813835
+offset_top = 1.1330109
+offset_right = 178.81383
+offset_bottom = 17.13301
+theme_override_fonts/font = ExtResource("2_dttsp")
+text = "Terror Teachers"
+
+[node name="Tasks" type="CanvasGroup" parent="Guide/BG/Control"]
+visible = false
+position = Vector2(10.844269, 7.2720566)
+
+[node name="Label" type="Label" parent="Guide/BG/Control/Tasks"]
+texture_filter = 1
+offset_left = 15.549973
+offset_top = 68.442215
+offset_right = 227.54997
+offset_bottom = 91.442215
+theme_override_fonts/font = ExtResource("2_dttsp")
+text = "Find this icon to execute the task"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Guide/BG/Control/Tasks"]
+y_sort_enabled = true
+scale = Vector2(0.1, 0.1)
+tile_map_data = PackedByteArray(0, 0, 35, 0, 15, 0, 0, 0, 36, 0, 41, 0, 0, 0, 35, 0, 13, 0, 0, 0, 53, 0, 18, 0, 0, 0, 35, 0, 10, 0, 0, 0, 2, 0, 4, 0, 0, 0, 39, 0, 13, 0, 0, 0, 48, 0, 28, 0, 0, 0)
+tile_set = ExtResource("15_g2hux")
+
+[node name="Task" parent="Guide/BG/Control/Tasks" instance=ExtResource("16_8a2jw")]
+position = Vector2(113.801926, 50.619736)
+status = SubResource("Resource_q55rd")
+
+[node name="Next" type="Button" parent="Guide"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 175.9182
+offset_top = 130.49167
+offset_right = 215.9182
+offset_bottom = 148.49167
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dttsp")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_accjd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3j6fc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8wiex")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nl34o")
+text = "Next
+"
+
+[node name="Previous" type="Button" parent="Guide"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 99.86998
+offset_top = 130.29698
+offset_right = 139.86998
+offset_bottom = 148.29698
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dttsp")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_accjd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3j6fc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8wiex")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nl34o")
+text = "Prev"
+
+[node name="GuideClose" type="Button" parent="Guide"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 39.00067
+offset_top = 24.413002
+offset_right = 60.062805
+offset_bottom = 42.413002
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dttsp")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_accjd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3j6fc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8wiex")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nl34o")
+text = "X"
+
 [node name="options" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -256,5 +596,7 @@ text = "PAUSED!"
 [connection signal="pressed" from="menu/menus/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="menu/menus2/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="menu/menus2/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GuideButton" to="." method="_on_guide_button_pressed"]
+[connection signal="pressed" from="Guide/GuideClose" to="." method="_on_guide_close_pressed"]
 [connection signal="pressed" from="options/close" to="." method="_on_close_pressed"]
 [connection signal="value_changed" from="options/HSlider" to="." method="_on_h_slider_value_changed"]

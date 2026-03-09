@@ -1,12 +1,13 @@
 extends Control
 
-@onready var menus: VBoxContainer = $menus
-@onready var options: Panel = $options
-@onready var h_slider: HSlider = $options/HSlider
-
+@onready var menus: VBoxContainer = %menus
+@onready var options: Panel = %Options
+@onready var h_slider: HSlider = %HSlider
+@onready var guide: Panel = %Guide
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	guide.visible = false
 	menus.visible = true
 	options.visible = false
 	h_slider.value = db_to_linear(audioManager.music_player.volume_db)
@@ -25,12 +26,16 @@ func _on_option_pressed() -> void:
 	options.visible = true
 	 # Replace with function body.
 
+func _on_guide_pressed() -> void:
+	menus.visible = false
+	guide.visible = true
+
 
 func _on_exit_pressed() -> void:
 	get_tree().quit() # Replace with function body.
 
 
-func _on_close_pressed() -> void:
+func _on_options_close_pressed() -> void:
 	menus.visible = true
 	options.visible = false
 	 # Replace with function body.
@@ -38,3 +43,8 @@ func _on_close_pressed() -> void:
 
 func _on_h_slider_value_changed(value: float) -> void:
 	audioManager.set_music_volume(value) # Replace with function body.
+
+
+func _on_guide_close_pressed() -> void:
+	menus.visible = true
+	guide.visible = false

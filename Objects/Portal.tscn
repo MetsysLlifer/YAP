@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://buvyemd7p3co"]
+[gd_scene load_steps=8 format=3 uid="uid://buvyemd7p3co"]
 
 [ext_resource type="Texture2D" uid="uid://sf50mc41b4ct" path="res://assets/base/time_cooldown.png" id="1_0u27h"]
 [ext_resource type="Script" uid="uid://bqmidj4bjnwe3" path="res://Objects/portal.gd" id="1_y6olh"]
+[ext_resource type="PackedScene" uid="uid://bu5wqaxo3k31t" path="res://Objects/Items/waypoint_marker.tscn" id="3_ejfla"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cesbb"]
 
@@ -134,3 +135,6 @@ autoplay = "live"
 [node name="Cooldown" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 2.0
+
+[node name="WaypointMarker" parent="." instance=ExtResource("3_ejfla")]
+position = Vector2(0, -2.024)

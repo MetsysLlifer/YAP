@@ -10,10 +10,12 @@ var camera_node: Camera2D
 func _ready() -> void:
 	camera_node = get_viewport().get_camera_2d()
 
+
 func _process(delta: float) -> void:
 	if not camera_node:
 		camera_node = get_viewport().get_camera_2d()
 		return
+	
 
 	var target_global_position: Vector2 = get_parent().global_position
 	var viewport_dimensions: Vector2 = get_viewport().get_visible_rect().size
