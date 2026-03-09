@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cp3gpekdfc4u1"]
+[gd_scene load_steps=14 format=3 uid="uid://cp3gpekdfc4u1"]
 
 [ext_resource type="Texture2D" uid="uid://byakwl7sck3u4" path="res://assets/background/floor1.png" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://5yup77182aoo" path="res://Scenes/scripts/main_menu.gd" id="1_fu7sn"]
 [ext_resource type="FontFile" uid="uid://wngk2hqp3kw4" path="res://assets/fonts/GrapeSoda.ttf" id="2_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://bi5gp4tq5y5op" path="res://assets/exit_button_small.png" id="4_ce3w2"]
+[ext_resource type="PackedScene" uid="uid://dsy0prtgyyo5c" path="res://Scenes/Animation/main_menu_sprites.tscn" id="5_n45e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("1_7vrkn")
@@ -244,6 +245,8 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_fu7sn")
 theme_override_font_sizes/font_size = 11
 text = "music"
+
+[node name="MainMenuSprites" parent="." instance=ExtResource("5_n45e2")]
 
 [connection signal="pressed" from="menus/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="menus/Options" to="." method="_on_option_pressed"]
